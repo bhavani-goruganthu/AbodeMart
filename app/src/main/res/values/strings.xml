@@ -1,0 +1,51 @@
+<resources>
+    // splash
+    <string name="app_name">Abode Mart</string>
+    <string name="app_name_subtitle">for Apartments</string>
+    <string name="content_description">image</string>
+
+    //login
+    <string name="title_login">LOGIN</string>
+    <string name="et_hint_email_id">Email ID</string>
+    <string name="et_hint_password">Password</string>
+    <string name="lbl_forgot_password"><u><b>Forgot Password?</b></u></string>
+    <string name="btn_lbl_login">Login</string>
+    <string name="dont_have_an_account">Don\'t have an account?</string>
+    <string name="register"><u><b>Register</b></u></string>
+
+    // Register
+    <string name="create_an_account">REGISTER</string>
+    <string name="hint_last_name">Last Name</string>
+    <string name="hint_first_name">First Name</string>
+    <string name="hint_apt_no">Apartment Number</string>
+    <string name="hint_building_no">Building Number</string>
+    <string name="hint_preferred_delivery_weekday">Preferred Delivery Weekday</string>
+    <string name="et_hint_confirm_password">Confirm Password</string>
+    <string name="i_agree">I Agree to the <u>Terms &amp; Conditions</u></string>
+    <string name="btn_lbl_register">Register</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="login"><u><b>Login</b></u></string>
+
+    <string-array name="days_array">
+        <item>Select Preferred Weekday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+    </string-array>
+
+
+    // Forgot Password
+    <string name="title_forgot_password">FORGOT PASSWORD?</string>
+    <string name="forgot_password_title_description">Enter your email address and
+        we\'ll send you an email to reset your password</string>
+    <string name="btn_lbl_submit">Submit</string>
+    <string name="email_sent_success">\"Email sent successfully to reset your password!\"</string>
+
+    // Dashboard
+    <string name="title_activity_dashboard">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_myOrders">My Orders</string>
+    <string name="title_settings">Settings</string>
+</resources>
