@@ -37,7 +37,7 @@ class HomeFragment : Fragment() {
 
         // set find id
         root.findViewById<MSPButton>(R.id.btn_add_to_cart).setOnClickListener {
-            (activity as HomeActivity).myCartItemsList.add(CartData("Tomato", "Whole Foods", "$ 30.00"))
+            (activity as HomeActivity).myCartItemsList.add(CartData("Tomato", "Whole Foods", "$ 30.00", "1"))
             myListAdapter.notifyDataSetChanged()
         }
         return root

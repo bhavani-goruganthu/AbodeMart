@@ -8,8 +8,6 @@ import com.google.android.material.snackbar.Snackbar
 
 
 open class BaseActivity : AppCompatActivity() {
-//    var myCartItemsList = ArrayList<String>()
-//        var myCartItemsList = listOf<Cart>()
 
    var myCartItemsList = ArrayList<CartData>()
 
