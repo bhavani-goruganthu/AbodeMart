@@ -16,7 +16,7 @@ class MyOrdersFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_myorders, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
+        val textView: TextView = root.findViewById(R.id.text_myOrders)
             textView.text = "This is My Orders Fragment"
         return root
     }

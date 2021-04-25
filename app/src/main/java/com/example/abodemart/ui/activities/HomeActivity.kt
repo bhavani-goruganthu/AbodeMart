@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -13,7 +12,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.abodemart.R
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,9 +28,9 @@ class HomeActivity : AppCompatActivity() {
             )
         }
         supportActionBar!!.setBackgroundDrawable(
-                ContextCompat.getDrawable(
-                        this@HomeActivity,
-                        R.drawable.app_gradient_color_background
+            ContextCompat.getDrawable(
+                this@HomeActivity,
+                    R.drawable.app_gradient_color_background
                 )
         )
 

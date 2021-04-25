@@ -1,14 +1,19 @@
 package com.example.abodemart.ui.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import com.example.abodemart.R
-import com.example.abodemart.ui.activities.CartActivity
+import com.example.abodemart.models.CartData
+import com.example.abodemart.ui.activities.CartFragment
+import com.example.abodemart.ui.activities.HomeActivity
+import com.example.abodemart.utils.MSPButton
 
 class HomeFragment : Fragment() {
+
+    private lateinit var myListAdapter: MyListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,8 +27,19 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
+
         val textView: TextView = root.findViewById(R.id.text_home)
            textView.text = "This is Home Fragment"
+
+        //set list
+        (activity as HomeActivity).myCartItemsList = ArrayList()
+        myListAdapter = MyListAdapter(activity as FragmentActivity,(activity as HomeActivity).myCartItemsList )
+
+        // set find id
+        root.findViewById<MSPButton>(R.id.btn_add_to_cart).setOnClickListener {
+            (activity as HomeActivity).myCartItemsList.add(CartData("Tomato", "Whole Foods", "$ 30.00"))
+            myListAdapter.notifyDataSetChanged()
+        }
         return root
     }
 
@@ -37,7 +53,9 @@ class HomeFragment : Fragment() {
         when (id) {
             // when settings in clicked on dashboard fragment
             R.id.action_cart -> {
-                startActivity(Intent(activity, CartActivity::class.java))
+                val dialog = CartFragment()
+                val fragmentManager = (activity as FragmentActivity).supportFragmentManager
+                dialog.show(fragmentManager, "cartDialog")
                 return true
             }
         }

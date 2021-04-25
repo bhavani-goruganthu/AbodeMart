@@ -1,22 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.fragments.SettingsFragment">
-
-    <TextView
-        android:id="@+id/text_notifications"
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+        tools:context=".ui.fragments.SettingsFragment"
+        >
+        <com.example.abodemart.utils.MSPTextView
+            android:id="@+id/tv_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/item_grey_border_background"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:paddingStart="@dimen/settings_edit_label_marginStartEnd"
+            android:paddingTop="@dimen/settings_edit_label_marginTopBottom"
+            android:paddingEnd="@dimen/settings_edit_label_marginStartEnd"
+            android:paddingBottom="@dimen/settings_edit_label_marginTopBottom"
+            android:text="@string/lbl_edit"
+            android:textColor="@color/colorThemeBlue"
+            android:textSize="@dimen/settings_edit_label_textSize" />
+
+        <com.example.abodemart.utils.MSPTextViewBold
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/colorThemeGreen"
+            android:textSize="@dimen/settings_name_textSize"
+            android:text="@string/john_wick"
+            />
+
+        <com.example.abodemart.utils.MSPTextView
+            android:id="@+id/tv_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_name"
+            android:layout_centerHorizontal="true"
+            android:text="@string/john_email"
+            android:layout_marginTop="@dimen/settings_info_marginTop"
+            android:textColor="@color/colorThemeBlue"
+            android:textSize="@dimen/settings_info_textSize"
+            />
+
+        <com.example.abodemart.utils.MSPTextView
+            android:id="@+id/tv_mobile_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_email"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/settings_info_marginTop"
+            android:textColor="@color/colorThemeBlue"
+            android:textSize="@dimen/settings_info_textSize"
+            android:text="@string/_415_778_9034"
+            />
+
+        <LinearLayout
+            android:id="@+id/ll_apt_building"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_below="@id/tv_mobile_number"
+            android:layout_marginTop="@dimen/settings_info_marginTop"
+            >
+            <com.example.abodemart.utils.MSPTextView
+                android:id="@+id/tv_building_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/apartment_41"
+                android:textColor="@color/colorThemeBlue"
+                android:textSize="@dimen/settings_info_textSize" />
+            <com.example.abodemart.utils.MSPTextView
+                android:id="@+id/tv_apt_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorThemeBlue"
+                android:textSize="@dimen/settings_info_textSize"
+                android:text="@string/_1383"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_preferred_weekday_delivery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_below="@id/ll_apt_building"
+            android:layout_marginTop="@dimen/settings_info_marginTop"
+            >
+            <com.example.abodemart.utils.MSPTextView
+                android:id="@+id/text_preferred_delivery_weekday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp"
+                android:textColor="@color/colorThemeBlue"
+                android:textSize="@dimen/settings_info_textSize"
+                android:text="@string/delivery_preferred_on" />
+
+            <com.example.abodemart.utils.MSPTextViewBold
+                android:id="@+id/preferred_weekday_delivery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorThemeGreen"
+                android:textSize="@dimen/settings_info_textSize"
+                android:text="@string/monday"
+                />
+        </LinearLayout>
+
+
+        <com.example.abodemart.utils.MSPButton
+            android:id="@+id/btn_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_below="@+id/ll_preferred_weekday_delivery"
+            android:layout_marginStart="@dimen/settings_button_marginStartEnd"
+            android:layout_marginTop="@dimen/settings_button_marginTopBottom"
+            android:layout_marginEnd="@dimen/settings_button_marginStartEnd"
+            android:layout_marginBottom="@dimen/settings_button_marginTopBottom"
+            android:background="@drawable/button_background"
+            android:foreground="?attr/selectableItemBackground"
+            android:paddingTop="@dimen/btn_padding"
+            android:paddingBottom="@dimen/btn_padding"
+            android:text="@string/btn_lbl_logout"
+            android:textColor="@color/white"
+            android:textSize="@dimen/btn_textSize"
+            />
+    </RelativeLayout>
+

@@ -130,6 +130,31 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_contact_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/et_hint_contact_number"
+                android:textColorHint="@color/colorSecondaryText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/til_email">
+
+                <com.example.abodemart.utils.MSPEditText
+                    android:id="@+id/et_contact_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
             <LinearLayout
                 android:id="@+id/ll_apt_building"
                 android:layout_width="match_parent"
@@ -139,28 +164,9 @@
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/til_email"
+                app:layout_constraintTop_toBottomOf="@id/til_contact_number"
                 >
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/til_aptNo"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginRight="@dimen/et_padding"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:hint="@string/hint_apt_no"
-                    android:textColorHint="@color/colorSecondaryText">
 
-                    <com.example.abodemart.utils.MSPEditText
-                        android:id="@+id/et_aptNo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:padding="@dimen/et_padding"
-                        android:textColor="@color/colorPrimaryText"
-                        android:textSize="@dimen/et_textSize" />
-
-                </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_buildingNo"
                     android:layout_width="0dp"
@@ -174,7 +180,28 @@
                         android:id="@+id/et_buildingNo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
+                        android:inputType="numberDecimal"
+                        android:padding="@dimen/et_padding"
+                        android:layout_marginRight="@dimen/et_padding"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="@dimen/et_textSize" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_aptNo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:hint="@string/hint_apt_no"
+                    android:textColorHint="@color/colorSecondaryText">
+
+                    <com.example.abodemart.utils.MSPEditText
+                        android:id="@+id/et_aptNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
                         android:padding="@dimen/et_padding"
                         android:textColor="@color/colorPrimaryText"
                         android:textSize="@dimen/et_textSize" />
@@ -289,20 +316,21 @@
                 android:id="@+id/btn_register"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="16dp"
+                android:background="@drawable/button_background"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
                 android:paddingTop="@dimen/btn_padding"
                 android:paddingBottom="@dimen/btn_padding"
                 android:text="@string/btn_lbl_register"
-                android:foreground="?attr/selectableItemBackground"
-                android:background="@drawable/button_background"
                 android:textColor="@color/white"
                 android:textSize="@dimen/btn_textSize"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ll_terms_and_conditions"/>
+                app:layout_constraintTop_toBottomOf="@id/ll_terms_and_conditions" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
