@@ -78,5 +78,10 @@
     <string name="err_msg_enter_mobile_number">Please enter Mobile Number</string>
     <string name="msg_profile_update_success">Your Profile is Updated Successfully.</string>
     <string name="cart_title">Cart</string>
+    <string name="empty_cart">Start Adding Items to the Cart</string>
+    <string name="not_empty_cart">Swipe Right to remove items</string>
+    <string name="select_store_text"><b><i>Select a Store</i></b></string>
+    <string name="profile_heading"><u><i>Profile</i></u></string>
+    <string name="app_subtitle"><b>Order Groceries from Nearby Stores</b></string>
 
 </resources>

@@ -19,7 +19,7 @@
                 android:layout_height="150dp"
                 android:contentDescription="@string/content_description"
                 android:scaleType="fitXY"
-                android:src="@drawable/register_bg" />
+                android:src="@drawable/bg_register" />
 
             <com.example.abodemart.utils.MSPTextViewBold
                 android:id="@+id/tv_title"
@@ -228,7 +228,7 @@
                     android:id="@+id/days_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:background="@drawable/spinner_dropdown_color_bg"
+                    android:background="@drawable/bg_spinner_dropdown_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -312,14 +312,14 @@
                     android:textSize="@dimen/txt_terms_conditions_textSize"/>
             </LinearLayout>
 
-            <com.example.abodemart.utils.MSPButton
+            <com.example.abodemart.utils.MSPButtonBold
                 android:id="@+id/btn_register"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="16dp"
-                android:background="@drawable/button_background"
+                android:background="@drawable/bg_button"
                 android:foreground="?attr/selectableItemBackground"
                 android:gravity="center"
                 android:paddingTop="@dimen/btn_padding"

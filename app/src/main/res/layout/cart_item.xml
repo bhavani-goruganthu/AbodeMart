@@ -19,10 +19,12 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="20dp"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:paddingTop="10dp">
+            >
 
             <com.example.abodemart.utils.MSPTextViewBold
                 android:id="@+id/card_item_title"
@@ -49,7 +51,7 @@
                     android:id="@+id/card_item_storeName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Costco"
+                    android:text="Whole Foods"
                     android:textColor="@color/black"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -61,9 +63,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginTop="15dp"
+            android:layout_margin="15dp"
+            android:layout_marginHorizontal="15dp"
             android:orientation="vertical"
-            android:paddingTop="10dp"
+            android:paddingRight="10dp"
             >
 
             <LinearLayout
@@ -88,7 +91,7 @@
                     android:textColor="@color/black"
                     android:gravity="center"
                     android:layout_marginHorizontal="8dp"
-                    android:background="@drawable/item_grey_border_background" />
+                    android:background="@drawable/bg_item_grey_border" />
 
                 <ImageView
                     android:id="@+id/add_icon"
@@ -108,7 +111,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginVertical="10dp"
+                android:layout_marginTop="10dp"
                 >
 
                 <ImageView

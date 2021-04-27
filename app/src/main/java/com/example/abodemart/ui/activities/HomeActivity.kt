@@ -12,7 +12,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.abodemart.R
 
-class HomeActivity : BaseActivity() {
+class HomeActivity : BaseCartActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +30,7 @@ class HomeActivity : BaseActivity() {
         supportActionBar!!.setBackgroundDrawable(
             ContextCompat.getDrawable(
                 this@HomeActivity,
-                    R.drawable.app_gradient_color_background
+                    R.drawable.bg_app_gradient_color
                 )
         )
 

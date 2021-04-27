@@ -10,7 +10,7 @@
         android:id="@+id/toolbar_user_profile_activity"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@drawable/app_gradient_color_background"
+        android:background="@drawable/bg_app_gradient_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -289,12 +289,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="-10dp"
-                    android:background="@drawable/spinner_dropdown_color_bg"
+                    android:background="@drawable/bg_spinner_dropdown_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.example.abodemart.utils.MSPButton
+            <com.example.abodemart.utils.MSPButtonBold
                 android:id="@+id/btn_save_profile"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
@@ -306,7 +306,7 @@
                 android:paddingBottom="@dimen/btn_padding"
                 android:text="@string/btn_lbl_save"
                 android:foreground="?attr/selectableItemBackground"
-                android:background="@drawable/button_background"
+                android:background="@drawable/bg_button"
                 android:textColor="@color/white"
                 android:textSize="@dimen/btn_textSize"
                 app:layout_constraintEnd_toEndOf="parent"

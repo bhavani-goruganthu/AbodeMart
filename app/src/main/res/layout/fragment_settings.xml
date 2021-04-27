@@ -5,6 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.fragments.SettingsFragment"
+    android:layout_marginTop="@dimen/et_padding"
         >
         <com.example.abodemart.utils.MSPTextView
             android:id="@+id/tv_edit"
@@ -12,7 +13,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="16dp"
-            android:background="@drawable/item_grey_border_background"
+            android:background="@drawable/bg_item_grey_border"
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:paddingStart="@dimen/settings_edit_label_marginStartEnd"
             android:paddingTop="@dimen/settings_edit_label_marginTopBottom"
@@ -22,12 +23,29 @@
             android:textColor="@color/colorThemeBlue"
             android:textSize="@dimen/settings_edit_label_textSize" />
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        >
+        <com.example.abodemart.utils.MSPTextViewBold
+            android:id="@+id/tv_profile_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/colorDarkGrey"
+            android:textSize="28sp"
+            android:text="@string/profile_heading"
+            />
+
         <com.example.abodemart.utils.MSPTextViewBold
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="@dimen/et_padding"
             android:textColor="@color/colorThemeGreen"
+            android:layout_below="@id/tv_profile_heading"
             android:textSize="@dimen/settings_name_textSize"
             android:text="@string/john_wick"
             />
@@ -37,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_name"
-            android:layout_centerHorizontal="true"
+            android:layout_alignParentStart="true"
             android:text="@string/john_email"
             android:layout_marginTop="@dimen/settings_info_marginTop"
             android:textColor="@color/colorThemeBlue"
@@ -49,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_email"
-            android:layout_centerHorizontal="true"
+            android:layout_alignParentStart="true"
             android:layout_marginTop="@dimen/settings_info_marginTop"
             android:textColor="@color/colorThemeBlue"
             android:textSize="@dimen/settings_info_textSize"
@@ -61,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center_horizontal"
+            android:layout_alignParentStart="true"
             android:layout_below="@id/tv_mobile_number"
             android:layout_marginTop="@dimen/settings_info_marginTop"
             >
@@ -87,7 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center_horizontal"
+            android:layout_alignParentStart="true"
             android:layout_below="@id/ll_apt_building"
             android:layout_marginTop="@dimen/settings_info_marginTop"
             >
@@ -111,17 +129,17 @@
         </LinearLayout>
 
 
-        <com.example.abodemart.utils.MSPButton
+        <com.example.abodemart.utils.MSPButtonBold
             android:id="@+id/btn_logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_below="@+id/ll_preferred_weekday_delivery"
-            android:layout_marginStart="@dimen/settings_button_marginStartEnd"
-            android:layout_marginTop="@dimen/settings_button_marginTopBottom"
-            android:layout_marginEnd="@dimen/settings_button_marginStartEnd"
-            android:layout_marginBottom="@dimen/settings_button_marginTopBottom"
-            android:background="@drawable/button_background"
+            android:layout_marginStart="@dimen/settings_button_margin"
+            android:layout_marginTop="@dimen/settings_button_margin"
+            android:layout_marginEnd="@dimen/settings_button_margin"
+            android:layout_marginBottom="@dimen/settings_button_margin"
+            android:background="@drawable/bg_button"
             android:foreground="?attr/selectableItemBackground"
             android:paddingTop="@dimen/btn_padding"
             android:paddingBottom="@dimen/btn_padding"
@@ -129,5 +147,6 @@
             android:textColor="@color/white"
             android:textSize="@dimen/btn_textSize"
             />
+    </RelativeLayout>
     </RelativeLayout>
 

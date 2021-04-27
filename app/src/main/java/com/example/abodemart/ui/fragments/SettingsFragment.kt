@@ -1,8 +1,8 @@
 package com.example.abodemart.ui.fragments
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.provider.SyncStateContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import com.example.abodemart.R
 import com.example.abodemart.ui.activities.LoginActivity
 import com.example.abodemart.ui.activities.UserProfileActivity
-import com.example.abodemart.utils.MSPButton
+import com.example.abodemart.utils.MSPButtonBold
 
 class SettingsFragment : Fragment(){
 
@@ -26,10 +26,27 @@ class SettingsFragment : Fragment(){
             val intent = Intent(this@SettingsFragment.context, UserProfileActivity::class.java)
             startActivity(intent)
         }
-        view.findViewById<MSPButton>(R.id.btn_logout).setOnClickListener{
-            val intent = Intent(this@SettingsFragment.context, LoginActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
+        view.findViewById<MSPButtonBold>(R.id.btn_logout).setOnClickListener{
+            val builder = AlertDialog.Builder(this@SettingsFragment.context)
+            builder.setTitle("Alert")
+            builder.setMessage("Are you sure you want to Logout?")
+            builder.setIcon(R.drawable.ic_baseline_warning_24)
+
+            builder.setPositiveButton("Yes") { dialogInterface, which ->
+                dialogInterface.dismiss()
+                val intent = Intent(this@SettingsFragment.context, LoginActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }
+
+            builder.setNegativeButton("No") { dialogInterface, which ->
+                dialogInterface.dismiss()
+            }
+
+            val alertDialog: AlertDialog = builder.create()
+            alertDialog.setCancelable(true)
+            alertDialog.setCanceledOnTouchOutside(true)
+            alertDialog.show()
         }
         return view
     }

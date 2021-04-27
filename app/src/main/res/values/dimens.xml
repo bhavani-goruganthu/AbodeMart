@@ -41,11 +41,10 @@
     <dimen name="settings_edit_label_marginTopBottom">5dp</dimen>
     <dimen name="settings_edit_label_textSize">18sp</dimen>
 <!--    <dimen name="settings_name_marginTop">2dp</dimen>-->
-    <dimen name="settings_name_textSize">28sp</dimen>
+    <dimen name="settings_name_textSize">23sp</dimen>
     <dimen name="settings_info_marginTop">16dp</dimen>
     <dimen name="settings_info_textSize">20sp</dimen>
-    <dimen name="settings_button_marginStartEnd">50dp</dimen>
-    <dimen name="settings_button_marginTopBottom">18dp</dimen>
+    <dimen name="settings_button_margin">50dp</dimen>
 
     // Profile
     <dimen name="user_image_background_stroke">4dp</dimen>
