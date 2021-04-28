@@ -1,8 +1,6 @@
 package com.example.abodemart.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.example.abodemart.models.CartData
 
 @Dao
@@ -13,4 +11,9 @@ interface CartDao {
     @Insert
     fun insertItem(item: CartData)
 
+    @Update
+    fun updateItem(item: CartData)
+
+    @Delete
+    fun deleteItem(item: CartData)
 }

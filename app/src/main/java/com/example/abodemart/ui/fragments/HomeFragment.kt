@@ -29,15 +29,6 @@ class HomeFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
-        // room db
-//        val cartDatabase = Room.databaseBuilder(
-//            activity as FragmentActivity, CartDatabase::class.java, "cart_database"
-//        ).allowMainThreadQueries().build()
-
-        // get all cart Items
-//        val allItems = cartDatabase.cartDao().getAllItems()
-//        myListAdapter = MyListAdapter(activity as FragmentActivity, allItems , root)
-
         root.findViewById<CardView>(R.id.cv_costco).setOnClickListener {
             val intent = Intent(this@HomeFragment.context, StoreActivity::class.java)
             intent.putExtra("Costco", true)

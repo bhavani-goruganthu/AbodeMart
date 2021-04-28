@@ -8,11 +8,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.abodemart.R
+import com.example.abodemart.database.CartDatabase
 import com.example.abodemart.models.CartData
 
 class MyListAdapter(
     private val context: Context,
-    private val allItems: List<CartData>,
+    private var cartDatabase: CartDatabase,
     private val rootView: View?,
 ) : RecyclerView.Adapter<MyListAdapter.ViewHolder>() {
 
@@ -22,10 +23,13 @@ class MyListAdapter(
     }
 
     override fun getItemCount(): Int {
+        // get all items
+        val allItems = cartDatabase.cartDao().getAllItems()
         return allItems.size
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+        val allItems = cartDatabase.cartDao().getAllItems()
         val newCartList = allItems[position]
         viewHolder.cardItemTitle.text = newCartList.itemName
         viewHolder.cardItemStoreName.text = newCartList.storeName

@@ -75,24 +75,4 @@ class StoreActivity : BaseDBActivity() {
         }
         findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar_store_activity).setNavigationOnClickListener { onBackPressed() }
     }
-
-//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        menuInflater.inflate(R.menu.home_cart, menu)
-//        return true
-//    }
-//
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        val id = item.itemId
-//        when (id) {
-//            // when settings in clicked on dashboard fragment
-//            R.id.action_cart -> {
-//                val dialog = CartActivity()
-//                val fragmentManager = supportFragmentManager
-//                dialog.show(fragmentManager, "cartDialog")
-//                return true
-//            }
-//        }
-//        return super.onOptionsItemSelected(item)
-//    }
-
 }

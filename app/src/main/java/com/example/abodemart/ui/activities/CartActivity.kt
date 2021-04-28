@@ -31,9 +31,11 @@ class CartActivity : DialogFragment() {
             activity as FragmentActivity , CartDatabase::class.java, "cart_database"
         ).allowMainThreadQueries().build()
 
+        // get all items
         val allItems = cartDatabase.cartDao().getAllItems()
+
         recyclerView.adapter =
-            MyListAdapter(activity as FragmentActivity, allItems, rootView as View)
+            MyListAdapter(activity as FragmentActivity, cartDatabase, rootView as View)
         recyclerView.layoutManager = LinearLayoutManager(activity as FragmentActivity)
 
         if (allItems.isEmpty()) {
