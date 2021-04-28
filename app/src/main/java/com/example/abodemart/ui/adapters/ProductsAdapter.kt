@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.abodemart.R
 import com.example.abodemart.database.CartDatabase
@@ -47,8 +48,11 @@ class ProductsAdapter(
                     itemCount = "1"
                 )
             )
-//            myListAdapter.notifyDataSetChanged()
-//            myListAdapter.notifyItemInserted(position)
+            Toast.makeText(
+                viewHolder.btnAddToCart.context,
+                "Item Added to the Cart!!",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 

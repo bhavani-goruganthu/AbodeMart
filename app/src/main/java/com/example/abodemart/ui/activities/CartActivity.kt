@@ -23,16 +23,16 @@ class CartActivity : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var rootView: View = inflater.inflate(R.layout.activity_cart, container, false)
+        val rootView: View = inflater.inflate(R.layout.activity_cart, container, false)
         val recyclerView = rootView.findViewById<RecyclerView>(R.id.rv_cart_items)
 
         // room db
-        var cartDatabase = Room.databaseBuilder(
+        val cartDatabase = Room.databaseBuilder(
             activity as FragmentActivity , CartDatabase::class.java, "cart_database"
         ).allowMainThreadQueries().build()
 
         // get all items
-        val allItems = cartDatabase.cartDao().getAllItems()
+        var allItems = cartDatabase.cartDao().getAllItems()
 
         recyclerView.adapter =
             MyListAdapter(activity as FragmentActivity, cartDatabase, rootView as View)
@@ -54,8 +54,11 @@ class CartActivity : DialogFragment() {
             }
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.layoutPosition
-//                allItems.removeAt(position)
-//                (recyclerView.adapter)?.notifyItemRemoved(position)
+                allItems = cartDatabase.cartDao().getAllItems()
+                cartDatabase.cartDao().deleteItem(allItems[position].cart_uid)
+                (recyclerView.adapter)!!.notifyItemRemoved(position)
+                (recyclerView.adapter)!!.notifyDataSetChanged()
+                allItems = cartDatabase.cartDao().getAllItems()
                 if (allItems.isEmpty()) {
                     rootView.findViewById<MSPTextViewBold>(R.id.tv_info).text = getString(R.string.empty_cart)
                 }

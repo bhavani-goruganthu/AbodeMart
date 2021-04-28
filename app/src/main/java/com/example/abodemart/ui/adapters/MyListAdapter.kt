@@ -35,19 +35,20 @@ class MyListAdapter(
         viewHolder.cardItemStoreName.text = newCartList.storeName
         viewHolder.cartItemCost.text = newCartList.itemCost
         viewHolder.itemsCount.text = newCartList.itemCount
-
         viewHolder.addIcon.setOnClickListener {
             val currentItemsCount = (viewHolder.itemsCount.text.toString().toInt())
             if (currentItemsCount > 0) {
                 val updatedItemsCount = currentItemsCount + 1
                 viewHolder.itemsCount.text = updatedItemsCount.toString()
-
-//                allItems[viewHolder.adapterPosition] = CartData(
-//                    viewHolder.cardItemTitle.text.toString(),
-//                    viewHolder.cardItemStoreName.text.toString(),
-//                    viewHolder.cartItemCost.text.toString(),
-//                    viewHolder.itemsCount.text.toString()
-//                )
+                cartDatabase.cartDao().updateItem(
+                    CartData(
+                        cart_uid = newCartList.cart_uid,
+                        itemName = viewHolder.cardItemTitle.text.toString(),
+                        storeName = viewHolder.cardItemStoreName.text.toString(),
+                        itemCost = viewHolder.cartItemCost.text.toString(),
+                        itemCount = viewHolder.itemsCount.text.toString()
+                    )
+                )
                 notifyItemChanged(viewHolder.adapterPosition)
                 notifyDataSetChanged()
 
@@ -58,22 +59,24 @@ class MyListAdapter(
             if (currentItemsCount > 1) {
                 val updatedItemsCount = currentItemsCount - 1
                 viewHolder.itemsCount.text = updatedItemsCount.toString()
-//
-//                allItems[viewHolder.adapterPosition] = CartData(
-//                    viewHolder.cardItemTitle.text.toString(),
-//                    viewHolder.cardItemStoreName.text.toString(),
-//                    viewHolder.cartItemCost.text.toString(),
-//                    viewHolder.itemsCount.text.toString()
-//                )
+                cartDatabase.cartDao().updateItem(
+                    CartData(
+                        cart_uid = newCartList.cart_uid,
+                        itemName = viewHolder.cardItemTitle.text.toString(),
+                        storeName = viewHolder.cardItemStoreName.text.toString(),
+                        itemCost = viewHolder.cartItemCost.text.toString(),
+                        itemCount = viewHolder.itemsCount.text.toString()
+                    )
+                )
                 notifyItemChanged(viewHolder.adapterPosition)
                 notifyDataSetChanged()
             }
         }
-
         viewHolder.deleteIcon.setOnClickListener {
-//            allItems.removeAt(viewHolder.adapterPosition)
+            cartDatabase.cartDao().deleteItem(newCartList.cart_uid)
             notifyItemRemoved(viewHolder.adapterPosition)
             notifyDataSetChanged()
+            val allItems = cartDatabase.cartDao().getAllItems()
             if (allItems.isEmpty()) {
                 val rv = rootView?.findViewById<TextView>(R.id.tv_info)
                 if (rv != null) {
@@ -82,7 +85,6 @@ class MyListAdapter(
             }
         }
     }
-
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var cardItemTitle: TextView = itemView.findViewById<TextView>(R.id.card_item_title)
