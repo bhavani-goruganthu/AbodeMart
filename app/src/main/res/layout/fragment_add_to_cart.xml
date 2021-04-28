@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_dialog"
+    android:orientation="vertical"
+    android:weightSum="10">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_user_profile_activity"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/bg_app_gradient_color">
+
+        <com.example.abodemart.utils.MSPTextViewBold
+            android:id="@+id/tv_Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="Add to Cart?"
+            android:paddingStart="-5dp"
+            android:paddingEnd="5dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        >
+        <ImageView
+            android:id="@+id/remove_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_baseline_remove_circle_24"
+            app:tint="@color/colorThemeGreen" />
+
+        <com.example.abodemart.utils.MSPTextViewBold
+            android:id="@+id/count_cart_item"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:text="@string/Item_Count"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/bg_item_grey_border" />
+
+        <ImageView
+            android:id="@+id/add_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_baseline_add_circle_24"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            app:tint="@color/colorThemeGreen" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginHorizontal="15dp"
+        >
+
+    <com.example.abodemart.utils.MSPButtonBold
+        android:id="@+id/btn_add_to_cart"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/et_padding"
+        android:layout_gravity="center"
+        android:text="Add"
+        android:foreground="?attr/selectableItemBackground"
+        android:background="@drawable/bg_button"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        />
+
+        <com.example.abodemart.utils.MSPButtonBold
+            android:id="@+id/btn_cancel"
+            android:layout_width="70dp"
+            android:layout_marginHorizontal="@dimen/et_padding"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Cancel"
+            android:foreground="?attr/selectableItemBackground"
+            android:background="@drawable/bg_button_cancel"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            />
+    </LinearLayout>
+
+</LinearLayout>

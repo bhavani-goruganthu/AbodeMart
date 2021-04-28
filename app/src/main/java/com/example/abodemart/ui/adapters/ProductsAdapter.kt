@@ -1,22 +1,29 @@
 package com.example.abodemart.ui.adapters
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.abodemart.R
 import com.example.abodemart.database.CartDatabase
 import com.example.abodemart.models.CartData
 import com.example.abodemart.models.ProductData
+import com.example.abodemart.ui.activities.CartActivity
+import com.example.abodemart.ui.activities.StoreActivity
 import com.example.abodemart.utils.MSPButton
+import com.example.abodemart.utils.MSPButtonBold
 import com.example.abodemart.utils.MSPTextView
+import com.example.abodemart.utils.MSPTextViewBold
 
 class ProductsAdapter(
     private val myProductsList: ArrayList<ProductData>,
-//    private val myCartItemsList: List<CartData>,
     private var cartDatabase: CartDatabase
 ) :
     RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
@@ -40,19 +47,46 @@ class ProductsAdapter(
         viewHolder.cardProductPhoto.setImageResource(newProductsList.imageUrl)
 
         viewHolder.btnAddToCart.setOnClickListener {
-            cartDatabase.cartDao().insertItem(
-                CartData(
-                    itemName = "Organic Banana",
-                    storeName = "Costco",
-                    itemCost = "$ 13.09",
-                    itemCount = "1"
+            val customDialog = Dialog(viewHolder.btnAddToCart.context)
+            customDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
+            customDialog.setContentView(R.layout.fragment_add_to_cart)
+            customDialog.findViewById<ImageView>(R.id.remove_icon).setOnClickListener(View.OnClickListener {
+                val tvItemCount = customDialog.findViewById<MSPTextViewBold>(R.id.count_cart_item)
+                val currentItemsCount = (tvItemCount.text.toString().toInt())
+                if (currentItemsCount > 1) {
+                    val updatedItemsCount = currentItemsCount - 1
+                    tvItemCount.text = updatedItemsCount.toString()
+                }
+            })
+            customDialog.findViewById<ImageView>(R.id.add_icon).setOnClickListener(View.OnClickListener {
+                val tvItemCount = customDialog.findViewById<MSPTextViewBold>(R.id.count_cart_item)
+                val currentItemsCount = (tvItemCount.text.toString().toInt())
+                if (currentItemsCount > 0) {
+                    val updatedItemsCount = currentItemsCount + 1
+                    tvItemCount.text = updatedItemsCount.toString()
+                }
+            })
+            customDialog.findViewById<MSPButtonBold>(R.id.btn_add_to_cart).setOnClickListener(View.OnClickListener {
+                cartDatabase.cartDao().insertItem(
+                    CartData(
+                        itemName = "Organic Banana",
+                        storeName = "Costco",
+                        itemCost = "$ 13.09",
+                        itemCount = "1"
+                    )
                 )
-            )
-            Toast.makeText(
-                viewHolder.btnAddToCart.context,
-                "Item Added to the Cart!!",
-                Toast.LENGTH_SHORT
-            ).show()
+                Toast.makeText(
+                    viewHolder.btnAddToCart.context,
+                    "Item Added to the Cart!!",
+                    Toast.LENGTH_SHORT
+                ).show()
+                customDialog.dismiss()
+            })
+            customDialog.findViewById<MSPButtonBold>(R.id.btn_cancel).setOnClickListener(View.OnClickListener {
+                customDialog.dismiss()
+            })
+            customDialog.show()
+
         }
     }
 

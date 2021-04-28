@@ -29,7 +29,7 @@ class MyListAdapter(
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        val allItems = cartDatabase.cartDao().getAllItems()
+        var allItems = cartDatabase.cartDao().getAllItems()
         val newCartList = allItems[position]
         viewHolder.cardItemTitle.text = newCartList.itemName
         viewHolder.cardItemStoreName.text = newCartList.storeName
@@ -76,7 +76,7 @@ class MyListAdapter(
             cartDatabase.cartDao().deleteItem(newCartList.cart_uid)
             notifyItemRemoved(viewHolder.adapterPosition)
             notifyDataSetChanged()
-            val allItems = cartDatabase.cartDao().getAllItems()
+            allItems = cartDatabase.cartDao().getAllItems()
             if (allItems.isEmpty()) {
                 val rv = rootView?.findViewById<TextView>(R.id.tv_info)
                 if (rv != null) {

@@ -84,4 +84,6 @@
     <string name="profile_heading"><u><i>Profile</i></u></string>
     <string name="app_subtitle"><b>Order Groceries from Nearby Stores</b></string>
 
+    <string name="Item_Count"><b>1</b></string>
+
 </resources>

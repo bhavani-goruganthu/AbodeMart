@@ -62,7 +62,6 @@ class StoreActivity : BaseDBActivity() {
             layoutManager = GridLayoutManager(this@StoreActivity, 2)
             adapter = ProductsAdapter(myProductsList, cartDatabase)
         }
-
     }
 
     private fun setupActionBar() {
