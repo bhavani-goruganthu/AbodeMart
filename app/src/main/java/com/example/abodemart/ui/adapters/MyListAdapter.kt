@@ -12,7 +12,7 @@ import com.example.abodemart.models.CartData
 
 class MyListAdapter(
     private val context: Context,
-    private val myCartItemsList: ArrayList<CartData>,
+    private val allItems: List<CartData>,
     private val rootView: View?,
 ) : RecyclerView.Adapter<MyListAdapter.ViewHolder>() {
 
@@ -22,11 +22,11 @@ class MyListAdapter(
     }
 
     override fun getItemCount(): Int {
-        return myCartItemsList.size
+        return allItems.size
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        val newCartList = myCartItemsList[position]
+        val newCartList = allItems[position]
         viewHolder.cardItemTitle.text = newCartList.itemName
         viewHolder.cardItemStoreName.text = newCartList.storeName
         viewHolder.cartItemCost.text = newCartList.itemCost
@@ -38,12 +38,12 @@ class MyListAdapter(
                 val updatedItemsCount = currentItemsCount + 1
                 viewHolder.itemsCount.text = updatedItemsCount.toString()
 
-                myCartItemsList[viewHolder.adapterPosition] = CartData(
-                    viewHolder.cardItemTitle.text.toString(),
-                    viewHolder.cardItemStoreName.text.toString(),
-                    viewHolder.cartItemCost.text.toString(),
-                    viewHolder.itemsCount.text.toString()
-                )
+//                allItems[viewHolder.adapterPosition] = CartData(
+//                    viewHolder.cardItemTitle.text.toString(),
+//                    viewHolder.cardItemStoreName.text.toString(),
+//                    viewHolder.cartItemCost.text.toString(),
+//                    viewHolder.itemsCount.text.toString()
+//                )
                 notifyItemChanged(viewHolder.adapterPosition)
                 notifyDataSetChanged()
 
@@ -54,23 +54,23 @@ class MyListAdapter(
             if (currentItemsCount > 1) {
                 val updatedItemsCount = currentItemsCount - 1
                 viewHolder.itemsCount.text = updatedItemsCount.toString()
-
-                myCartItemsList[viewHolder.adapterPosition] = CartData(
-                    viewHolder.cardItemTitle.text.toString(),
-                    viewHolder.cardItemStoreName.text.toString(),
-                    viewHolder.cartItemCost.text.toString(),
-                    viewHolder.itemsCount.text.toString()
-                )
+//
+//                allItems[viewHolder.adapterPosition] = CartData(
+//                    viewHolder.cardItemTitle.text.toString(),
+//                    viewHolder.cardItemStoreName.text.toString(),
+//                    viewHolder.cartItemCost.text.toString(),
+//                    viewHolder.itemsCount.text.toString()
+//                )
                 notifyItemChanged(viewHolder.adapterPosition)
                 notifyDataSetChanged()
             }
         }
 
         viewHolder.deleteIcon.setOnClickListener {
-            myCartItemsList.removeAt(viewHolder.adapterPosition)
+//            allItems.removeAt(viewHolder.adapterPosition)
             notifyItemRemoved(viewHolder.adapterPosition)
             notifyDataSetChanged()
-            if (myCartItemsList.size == 0) {
+            if (allItems.isEmpty()) {
                 val rv = rootView?.findViewById<TextView>(R.id.tv_info)
                 if (rv != null) {
                     rv.text = context.resources.getString(R.string.empty_cart)

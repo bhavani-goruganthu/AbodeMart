@@ -6,14 +6,15 @@ import android.view.*
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.room.Room
 import com.example.abodemart.R
-import com.example.abodemart.models.CartData
-import com.example.abodemart.ui.activities.CartActivity
-import com.example.abodemart.ui.activities.HomeActivity
 import com.example.abodemart.ui.activities.StoreActivity
 import com.example.abodemart.ui.adapters.MyListAdapter
+import com.example.abodemart.database.CartDatabase
 
 class HomeFragment : Fragment() {
+
+    private lateinit var myListAdapter: MyListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,15 +29,14 @@ class HomeFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
-//        //set list
-//        (activity as HomeActivity).myCartItemsList = ArrayList()
-        (activity as HomeActivity).myListAdapter = MyListAdapter(activity as FragmentActivity,(activity as HomeActivity).myCartItemsList , root)
+        // room db
+//        val cartDatabase = Room.databaseBuilder(
+//            activity as FragmentActivity, CartDatabase::class.java, "cart_database"
+//        ).allowMainThreadQueries().build()
 
-        // set find id
-//        root.findViewById<MSPButton>(R.id.btn_add_to_cart).setOnClickListener {
-//            (activity as HomeActivity).myCartItemsList.add(CartData("Tomato", "Whole Foods", "$ 30.00", "1"))
-//            myListAdapter.notifyDataSetChanged()
-//        }
+        // get all cart Items
+//        val allItems = cartDatabase.cartDao().getAllItems()
+//        myListAdapter = MyListAdapter(activity as FragmentActivity, allItems , root)
 
         root.findViewById<CardView>(R.id.cv_costco).setOnClickListener {
             val intent = Intent(this@HomeFragment.context, StoreActivity::class.java)
@@ -56,22 +56,22 @@ class HomeFragment : Fragment() {
         return root
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.home_cart, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
-        when (id) {
-            // when settings in clicked on dashboard fragment
-            R.id.action_cart -> {
-                val dialog = CartActivity()
-                val fragmentManager = (activity as FragmentActivity).supportFragmentManager
-                dialog.show(fragmentManager, "cartDialog")
-                return true
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
+//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+//        inflater.inflate(R.menu.home_cart, menu)
+//        super.onCreateOptionsMenu(menu, inflater)
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        val id = item.itemId
+//        when (id) {
+//            // when settings in clicked on dashboard fragment
+//            R.id.action_cart -> {
+//                val dialog = CartActivity()
+//                val fragmentManager = (activity as FragmentActivity).supportFragmentManager
+//                (activity as HomeActivity).dialog.show(fragmentManager, "cartDialog")
+//                return true
+//            }
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
 }

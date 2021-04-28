@@ -10,6 +10,9 @@ import com.google.android.material.snackbar.Snackbar
 
 
 open class BaseActivity : AppCompatActivity() {
+
+
+
     // to display a message at the bottom of the screen
     fun showErrorSnackBar(message: String, errorMessage: Boolean) {
         val snackBar = Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG)

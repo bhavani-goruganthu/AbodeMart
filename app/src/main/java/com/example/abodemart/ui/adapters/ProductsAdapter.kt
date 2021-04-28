@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.abodemart.R
+import com.example.abodemart.database.CartDatabase
 import com.example.abodemart.models.CartData
 import com.example.abodemart.models.ProductData
 import com.example.abodemart.utils.MSPButton
@@ -14,8 +15,8 @@ import com.example.abodemart.utils.MSPTextView
 
 class ProductsAdapter(
     private val myProductsList: ArrayList<ProductData>,
-    private val myCartItemsList: ArrayList<CartData>
-//    ,private var myListAdapter: MyListAdapter
+//    private val myCartItemsList: List<CartData>,
+    private var cartDatabase: CartDatabase
 ) :
     RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
 
@@ -24,7 +25,6 @@ class ProductsAdapter(
         val myProductsListItem =
             LayoutInflater.from(parent.context).inflate(R.layout.product_row, parent, false)
         return ViewHolder(myProductsListItem)
-
     }
 
     override fun getItemCount(): Int {
@@ -39,7 +39,14 @@ class ProductsAdapter(
         viewHolder.cardProductPhoto.setImageResource(newProductsList.imageUrl)
 
         viewHolder.btnAddToCart.setOnClickListener {
-            myCartItemsList.add(CartData("Tomato", "Whole Foods", "$ 30.00", "1"))
+            cartDatabase.cartDao().insertItem(
+                CartData(
+                    itemName = "Organic Banana",
+                    storeName = "Costco",
+                    itemCost = "$ 13.09",
+                    itemCount = "1"
+                )
+            )
 //            myListAdapter.notifyDataSetChanged()
 //            myListAdapter.notifyItemInserted(position)
         }

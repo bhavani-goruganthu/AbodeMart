@@ -9,7 +9,9 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
 import com.example.abodemart.R
+import com.example.abodemart.database.CartDatabase
 import com.example.abodemart.ui.adapters.MyListAdapter
 import com.example.abodemart.utils.MSPTextViewBold
 
@@ -23,13 +25,20 @@ class CartActivity : DialogFragment() {
     ): View? {
         var rootView: View = inflater.inflate(R.layout.activity_cart, container, false)
         val recyclerView = rootView.findViewById<RecyclerView>(R.id.rv_cart_items)
+
+        // room db
+        var cartDatabase = Room.databaseBuilder(
+            activity as FragmentActivity , CartDatabase::class.java, "cart_database"
+        ).allowMainThreadQueries().build()
+
+        val allItems = cartDatabase.cartDao().getAllItems()
         recyclerView.adapter =
-            MyListAdapter(activity as FragmentActivity, (activity as BaseCartActivity).myCartItemsList, rootView as View)
+            MyListAdapter(activity as FragmentActivity, allItems, rootView as View)
         recyclerView.layoutManager = LinearLayoutManager(activity as FragmentActivity)
 
-        if ((activity as BaseCartActivity).myCartItemsList.size == 0) {
+        if (allItems.isEmpty()) {
             rootView.findViewById<MSPTextViewBold>(R.id.tv_info).text = getString(R.string.empty_cart)
-        } else if ((activity as BaseCartActivity).myCartItemsList.size > 0){
+        } else if (allItems.isNotEmpty()){
             rootView.findViewById<MSPTextViewBold>(R.id.tv_info).text = getString(R.string.not_empty_cart)
         }
 
@@ -43,9 +52,9 @@ class CartActivity : DialogFragment() {
             }
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.layoutPosition
-                (activity as BaseCartActivity).myCartItemsList.removeAt(position)
-                (recyclerView.adapter)?.notifyItemRemoved(position)
-                if ((activity as BaseCartActivity).myCartItemsList.size == 0) {
+//                allItems.removeAt(position)
+//                (recyclerView.adapter)?.notifyItemRemoved(position)
+                if (allItems.isEmpty()) {
                     rootView.findViewById<MSPTextViewBold>(R.id.tv_info).text = getString(R.string.empty_cart)
                 }
             }
