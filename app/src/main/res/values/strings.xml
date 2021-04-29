@@ -85,5 +85,6 @@
     <string name="app_subtitle"><b>Order Groceries from Nearby Stores</b></string>
 
     <string name="Item_Count"><b>1</b></string>
+    <string name="btn_clear_cart"><b>Clear All</b></string>
 
 </resources>

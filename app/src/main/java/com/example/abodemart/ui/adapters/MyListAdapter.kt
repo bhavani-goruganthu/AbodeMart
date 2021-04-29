@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.abodemart.R
 import com.example.abodemart.database.CartDatabase
 import com.example.abodemart.models.CartData
+import com.example.abodemart.utils.MSPButtonBold
 
 class MyListAdapter(
     private val context: Context,
@@ -84,6 +85,7 @@ class MyListAdapter(
                 val rv = rootView?.findViewById<TextView>(R.id.tv_info)
                 if (rv != null) {
                     rv.text = context.resources.getString(R.string.empty_cart)
+                    rootView?.findViewById<MSPButtonBold>(R.id.btn_clear_cart)?.visibility = View.GONE
                 }
             }
         }
