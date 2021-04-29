@@ -64,8 +64,6 @@ class HandleProductActivity : AppCompatActivity(), View.OnClickListener {
             applicationContext, ProductDatabase::class.java, "product_database"
         ).allowMainThreadQueries().build()
 
-
-
         val productIDUpdate = findViewById<EditText>(R.id.et_product_id)
         val productTitle = findViewById<EditText>(R.id.et_product_title)
         val productImageUrl = findViewById<EditText>(R.id.et_product_imageUrl)

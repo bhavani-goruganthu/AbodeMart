@@ -49,8 +49,11 @@
         <activity
             android:name=".ui.activities.HandleProductActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AbodeMart.NoActionBar"
-            />
+            android:theme="@style/Theme.AbodeMart.NoActionBar" />
+        <activity
+            android:name=".ui.activities.CheckoutActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AbodeMart.NoActionBar" />
         <activity
             android:name=".ui.activities.MainActivity"
             android:screenOrientation="portrait" />

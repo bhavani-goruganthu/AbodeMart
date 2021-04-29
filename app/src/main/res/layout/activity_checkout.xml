@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.CheckoutActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_checkout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/bg_app_gradient_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.example.abodemart.utils.MSPTextViewBold
+            android:id="@+id/tv_title_checkout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingStart="@dimen/toolbar_title_paddingStart"
+            android:paddingEnd="0dp"
+            android:text="Checkout"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/et_padding"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="@dimen/et_padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_checkout">
+
+        <com.example.abodemart.utils.MSPTextView
+            android:id="@+id/tv_mobile_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Verify the Details before proceeding"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:id="@+id/ll_building_num"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_mobile_number"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal">
+
+            <com.example.abodemart.utils.MSPTextView
+                android:id="@+id/tv_building_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Building : "
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorThemeBlue"
+                android:textSize="@dimen/settings_info_textSize" />
+
+            <com.example.abodemart.utils.MSPTextView
+                android:id="@+id/tv_building_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="41"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black"
+                android:textSize="@dimen/settings_info_textSize" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_apt_num"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_building_num"
+            android:layout_marginTop="@dimen/settings_info_marginTop"
+            android:orientation="horizontal">
+
+            <com.example.abodemart.utils.MSPTextView
+                android:id="@+id/tv_apartment_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Apartment : "
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorThemeBlue"
+                android:textSize="@dimen/settings_info_textSize" />
+
+            <com.example.abodemart.utils.MSPTextView
+                android:id="@+id/tv_apartment_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="1383"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black"
+                android:textSize="@dimen/settings_info_textSize" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_preferred_weekday_delivery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_apt_num"
+            android:layout_marginTop="@dimen/settings_info_marginTop"
+            android:orientation="horizontal">
+
+            <com.example.abodemart.utils.MSPTextView
+                android:id="@+id/text_preferred_delivery_weekday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Delivery On : "
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorThemeBlue"
+                android:textSize="@dimen/settings_info_textSize" />
+
+            <com.example.abodemart.utils.MSPTextView
+                android:id="@+id/preferred_weekday_delivery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="May 19 2021 Wednesday by 9pm"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black"
+                android:textSize="@dimen/settings_info_textSize" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_payment_mode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_preferred_weekday_delivery"
+            android:layout_marginTop="@dimen/settings_info_marginTop"
+            android:orientation="horizontal">
+
+            <com.example.abodemart.utils.MSPTextView
+                android:id="@+id/text_payment_mode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Payment Mode : "
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorThemeBlue"
+                android:textSize="@dimen/settings_info_textSize" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <CheckedTextView
+                    android:id="@+id/ctv_COD"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="COD"
+                    android:paddingEnd="@dimen/et_padding"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/black"
+                    android:checked="true"
+                    android:textSize="@dimen/settings_info_textSize" />
+
+                <CheckedTextView
+                    android:id="@+id/ctv_add_to_rent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Add to Rent"
+                    android:textAlignment="viewStart"
+                    android:paddingEnd="@dimen/et_padding"
+                    android:textColor="@color/black"
+                    android:checked="false"
+                    android:textSize="@dimen/settings_info_textSize" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.example.abodemart.utils.MSPButtonBold
+            android:id="@+id/btn_place_order"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="30dp"
+            android:layout_below="@+id/ll_payment_mode"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/bg_button"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:paddingTop="@dimen/btn_padding"
+            android:paddingBottom="@dimen/btn_padding"
+            android:text="Place Order"
+            android:textColor="@color/white"
+            android:textSize="@dimen/btn_textSize" />
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

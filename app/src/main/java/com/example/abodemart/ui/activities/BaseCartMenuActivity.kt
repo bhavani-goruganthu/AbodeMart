@@ -3,11 +3,8 @@ package com.example.abodemart.ui.activities
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.room.Room
-import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.abodemart.R
-import com.example.abodemart.database.CartDatabase
+import com.example.abodemart.ui.fragments.CartDialogFragment
 
 open class BaseCartMenuActivity : AppCompatActivity() {
 
@@ -19,7 +16,7 @@ open class BaseCartMenuActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_cart -> {
-                val dialog = CartActivity()
+                val dialog = CartDialogFragment()
                 val fragmentManager = supportFragmentManager
                 dialog.show(fragmentManager, "cartDialog")
                 return true
