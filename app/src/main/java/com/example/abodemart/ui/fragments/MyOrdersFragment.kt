@@ -1,12 +1,14 @@
 package com.example.abodemart.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.abodemart.R
+import com.example.abodemart.ui.activities.HandleProductActivity
+import com.example.abodemart.utils.MSPButtonBold
 
 class MyOrdersFragment : Fragment() {
 
@@ -16,8 +18,11 @@ class MyOrdersFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_myorders, container, false)
-        val textView: TextView = root.findViewById(R.id.text_myOrders)
-            textView.text = "This is My Orders Fragment"
+
+        root.findViewById<MSPButtonBold>(R.id.btn_handle_product).setOnClickListener{
+            val intent = Intent(this@MyOrdersFragment.context, HandleProductActivity::class.java)
+            startActivity(intent)
+        }
         return root
     }
 }

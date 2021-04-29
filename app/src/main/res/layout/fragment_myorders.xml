@@ -6,17 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.MyOrdersFragment">
 
-    <TextView
-        android:id="@+id/text_myOrders"
-        android:layout_width="match_parent"
+    <com.example.abodemart.utils.MSPButtonBold
+        android:id="@+id/btn_handle_product"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bg_button"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:paddingTop="@dimen/btn_padding"
+        android:paddingBottom="@dimen/btn_padding"
+        android:text="Add"
+        android:textColor="@color/white"
+        android:textSize="@dimen/btn_textSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

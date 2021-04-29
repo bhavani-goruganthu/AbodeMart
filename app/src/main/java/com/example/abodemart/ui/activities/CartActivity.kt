@@ -10,12 +10,14 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.abodemart.R
 import com.example.abodemart.database.CartDatabase
 import com.example.abodemart.ui.adapters.MyListAdapter
 import com.example.abodemart.utils.MSPTextViewBold
 
-class CartActivity : DialogFragment() {
+class CartActivity() : DialogFragment() {
     override fun getTheme() = R.style.RoundedCornersDialog
 
     override fun onCreateView(
@@ -28,7 +30,7 @@ class CartActivity : DialogFragment() {
 
         // room db
         val cartDatabase = Room.databaseBuilder(
-            activity as FragmentActivity , CartDatabase::class.java, "cart_database"
+            activity as FragmentActivity, CartDatabase::class.java, "cart_database"
         ).allowMainThreadQueries().build()
 
         // get all items

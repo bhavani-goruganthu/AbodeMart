@@ -9,5 +9,6 @@ data class CartData(
     val itemName: String,
     val storeName: String,
     val itemCost: String,
-    val itemCount: String
+    val itemCount: String,
+    val itemPerCost: String
 )

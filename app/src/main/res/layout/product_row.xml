@@ -34,7 +34,7 @@
         </FrameLayout>
 
             <com.example.abodemart.utils.MSPButton
-                android:id="@+id/btn_add_to_cart"
+                android:id="@+id/btn_add_to_cart_edit"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_gravity="end"

@@ -40,18 +40,19 @@ class MyListAdapter(
             if (currentItemsCount > 0) {
                 val updatedItemsCount = currentItemsCount + 1
                 viewHolder.itemsCount.text = updatedItemsCount.toString()
+                val updatedCost = (newCartList.itemPerCost.removeSurrounding("$", " /lb").toFloat()) * updatedItemsCount
                 cartDatabase.cartDao().updateItem(
                     CartData(
                         cart_uid = newCartList.cart_uid,
                         itemName = viewHolder.cardItemTitle.text.toString(),
                         storeName = viewHolder.cardItemStoreName.text.toString(),
-                        itemCost = viewHolder.cartItemCost.text.toString(),
-                        itemCount = viewHolder.itemsCount.text.toString()
+                        itemCost = "\$ ${updatedCost.toString()}",
+                        itemCount = viewHolder.itemsCount.text.toString(),
+                        itemPerCost = newCartList.itemPerCost
                     )
                 )
                 notifyItemChanged(viewHolder.adapterPosition)
                 notifyDataSetChanged()
-
             }
         }
         viewHolder.removeIcon.setOnClickListener {
@@ -59,13 +60,15 @@ class MyListAdapter(
             if (currentItemsCount > 1) {
                 val updatedItemsCount = currentItemsCount - 1
                 viewHolder.itemsCount.text = updatedItemsCount.toString()
+                val updatedCost = (newCartList.itemPerCost.removeSurrounding("$", " /lb").toFloat()) * updatedItemsCount
                 cartDatabase.cartDao().updateItem(
                     CartData(
                         cart_uid = newCartList.cart_uid,
                         itemName = viewHolder.cardItemTitle.text.toString(),
                         storeName = viewHolder.cardItemStoreName.text.toString(),
-                        itemCost = viewHolder.cartItemCost.text.toString(),
-                        itemCount = viewHolder.itemsCount.text.toString()
+                        itemCost = "\$ ${updatedCost.toString()}",
+                        itemCount = viewHolder.itemsCount.text.toString(),
+                        itemPerCost = newCartList.itemPerCost
                     )
                 )
                 notifyItemChanged(viewHolder.adapterPosition)

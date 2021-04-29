@@ -1,6 +1,7 @@
 package com.example.abodemart.ui.adapters
 
 import android.app.Dialog
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
@@ -9,49 +10,58 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.abodemart.R
 import com.example.abodemart.database.CartDatabase
+import com.example.abodemart.database.ProductDatabase
 import com.example.abodemart.models.CartData
-import com.example.abodemart.models.ProductData
-import com.example.abodemart.ui.activities.CartActivity
-import com.example.abodemart.ui.activities.StoreActivity
 import com.example.abodemart.utils.MSPButton
 import com.example.abodemart.utils.MSPButtonBold
 import com.example.abodemart.utils.MSPTextView
 import com.example.abodemart.utils.MSPTextViewBold
 
 class ProductsAdapter(
-    private val myProductsList: ArrayList<ProductData>,
-    private var cartDatabase: CartDatabase
+    private val context: Context,
+    private var productDatabase: ProductDatabase,
+    private var cartDatabase: CartDatabase,
+    private var storeName: String
 ) :
     RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): ViewHolder {
-        val myProductsListItem =
+        val allProductsItem =
             LayoutInflater.from(parent.context).inflate(R.layout.product_row, parent, false)
-        return ViewHolder(myProductsListItem)
+        return ViewHolder(allProductsItem)
     }
 
     override fun getItemCount(): Int {
-        return myProductsList.size
+        // get all products
+        val allStoreProducts = productDatabase.productDao().getStoreProducts(storeName)
+        return allStoreProducts.size
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        val newProductsList = myProductsList[position]
+        // get all products
+        val allStoreProducts = productDatabase.productDao().getStoreProducts(storeName)
+        val newProductsList = allStoreProducts[position]
+
         viewHolder.cardProductTitle.text = newProductsList.title
         viewHolder.cardProductStoreName.text = newProductsList.store
         viewHolder.cardProductCost.text = newProductsList.price
-        viewHolder.cardProductPhoto.setImageResource(newProductsList.imageUrl)
+
+        // for Image
+        val uri = newProductsList.imageUrl
+        val contextObj =  viewHolder.cardProductPhoto.context
+        val imageResource = contextObj.resources.getIdentifier(uri, "drawable", contextObj.packageName)
+        viewHolder.cardProductPhoto.setImageResource(imageResource)
 
         viewHolder.btnAddToCart.setOnClickListener {
             val customDialog = Dialog(viewHolder.btnAddToCart.context)
             customDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
             customDialog.setContentView(R.layout.fragment_add_to_cart)
+            val tvItemCount = customDialog.findViewById<MSPTextViewBold>(R.id.count_cart_item)
+
             customDialog.findViewById<ImageView>(R.id.remove_icon).setOnClickListener(View.OnClickListener {
-                val tvItemCount = customDialog.findViewById<MSPTextViewBold>(R.id.count_cart_item)
                 val currentItemsCount = (tvItemCount.text.toString().toInt())
                 if (currentItemsCount > 1) {
                     val updatedItemsCount = currentItemsCount - 1
@@ -59,7 +69,6 @@ class ProductsAdapter(
                 }
             })
             customDialog.findViewById<ImageView>(R.id.add_icon).setOnClickListener(View.OnClickListener {
-                val tvItemCount = customDialog.findViewById<MSPTextViewBold>(R.id.count_cart_item)
                 val currentItemsCount = (tvItemCount.text.toString().toInt())
                 if (currentItemsCount > 0) {
                     val updatedItemsCount = currentItemsCount + 1
@@ -67,26 +76,28 @@ class ProductsAdapter(
                 }
             })
             customDialog.findViewById<MSPButtonBold>(R.id.btn_add_to_cart).setOnClickListener(View.OnClickListener {
+                val updatedCost = (newProductsList.price.removeSurrounding("$", " /lb").toFloat())*(tvItemCount.text.toString().toFloat())
+                val itemCost = "\$ ${updatedCost.toString()}"
                 cartDatabase.cartDao().insertItem(
                     CartData(
-                        itemName = "Organic Banana",
-                        storeName = "Costco",
-                        itemCost = "$ 13.09",
-                        itemCount = "1"
+                        itemName = newProductsList.title,
+                        storeName = newProductsList.store,
+                        itemCost = itemCost,
+                        itemCount = tvItemCount.text.toString(),
+                        itemPerCost = newProductsList.price
                     )
                 )
-                Toast.makeText(
-                    viewHolder.btnAddToCart.context,
-                    "Item Added to the Cart!!",
-                    Toast.LENGTH_SHORT
-                ).show()
                 customDialog.dismiss()
+                Toast.makeText(
+                    context,
+                    "Added ${newProductsList.title} to the Cart!! ",
+                    Toast.LENGTH_LONG
+                ).show()
             })
             customDialog.findViewById<MSPButtonBold>(R.id.btn_cancel).setOnClickListener(View.OnClickListener {
                 customDialog.dismiss()
             })
             customDialog.show()
-
         }
     }
 
@@ -96,7 +107,7 @@ class ProductsAdapter(
         var cardProductStoreName: MSPTextView =
             itemView.findViewById<MSPTextView>(R.id.card_product_storeName)
         var cardProductCost: TextView = itemView.findViewById<TextView>(R.id.card_product_cost)
-        var btnAddToCart: MSPButton = itemView.findViewById<MSPButton>(R.id.btn_add_to_cart)
+        var btnAddToCart: MSPButton = itemView.findViewById<MSPButton>(R.id.btn_add_to_cart_edit)
     }
 
 }

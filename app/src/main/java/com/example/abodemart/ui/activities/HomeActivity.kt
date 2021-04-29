@@ -12,7 +12,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.abodemart.R
 
-class HomeActivity : BaseDBActivity() {
+class HomeActivity : BaseCartMenuActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
