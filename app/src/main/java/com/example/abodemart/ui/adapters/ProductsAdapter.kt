@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +26,7 @@ class ProductsAdapter(
     private var productDatabase: ProductDatabase,
     private var cartDatabase: CartDatabase,
     private var searchTerm: String,
-    private var storeName: String,
+    private var storeName: String = "%%",
 ) :
     RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
 
@@ -39,6 +40,7 @@ class ProductsAdapter(
         // get all products
 //        val allStoreProducts = productDatabase.productDao().getStoreProducts(storeName)
         val allStoreProducts = productDatabase.productDao().getStoreSearchProducts(searchTerm, storeName)
+//        Log.d("bhavani", "allProducts ? \n ${allStoreProducts.size} $storeName")
         return allStoreProducts.size
     }
 
@@ -78,7 +80,8 @@ class ProductsAdapter(
                 }
             })
             customDialog.findViewById<MSPButtonBold>(R.id.btn_add_to_cart).setOnClickListener(View.OnClickListener {
-                val updatedCost = (newProductsList.price.removeSurrounding("$", " /lb").toFloat())*(tvItemCount.text.toString().toFloat())
+                var updatedCost = (newProductsList.price.removeSurrounding("$", " /lb").toFloat())*(tvItemCount.text.toString().toFloat())
+                updatedCost = String.format("%.2f", updatedCost).toFloat()
                 val itemCost = "\$ ${updatedCost.toString()}"
                 cartDatabase.cartDao().insertItem(
                     CartData(

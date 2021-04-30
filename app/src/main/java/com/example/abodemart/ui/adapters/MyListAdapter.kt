@@ -41,7 +41,8 @@ class MyListAdapter(
             if (currentItemsCount > 0) {
                 val updatedItemsCount = currentItemsCount + 1
                 viewHolder.itemsCount.text = updatedItemsCount.toString()
-                val updatedCost = (newCartList.itemPerCost.removeSurrounding("$", " /lb").toFloat()) * updatedItemsCount
+                var updatedCost = (newCartList.itemPerCost.removeSurrounding("$", " /lb").toFloat()) * updatedItemsCount
+                updatedCost = String.format("%.2f", updatedCost).toFloat()
                 cartDatabase.cartDao().updateItem(
                     CartData(
                         cart_uid = newCartList.cart_uid,
@@ -61,7 +62,8 @@ class MyListAdapter(
             if (currentItemsCount > 1) {
                 val updatedItemsCount = currentItemsCount - 1
                 viewHolder.itemsCount.text = updatedItemsCount.toString()
-                val updatedCost = (newCartList.itemPerCost.removeSurrounding("$", " /lb").toFloat()) * updatedItemsCount
+                var updatedCost = (newCartList.itemPerCost.removeSurrounding("$", " /lb").toFloat()) * updatedItemsCount
+                updatedCost = String.format("%.2f", updatedCost).toFloat()
                 cartDatabase.cartDao().updateItem(
                     CartData(
                         cart_uid = newCartList.cart_uid,

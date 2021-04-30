@@ -87,5 +87,8 @@
     <string name="Item_Count"><b>1</b></string>
     <string name="btn_clear_cart"><b>Clear All</b></string>
     <string name="title_search">Search</string>
+    <string name="costco_title">Costco Wholesale</string>
+    <string name="whole_foods_title">Whole Foods Market</string>
+    <string name="new_india_bazar_title">New India Bazar</string>
 
 </resources>

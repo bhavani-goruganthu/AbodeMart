@@ -5,12 +5,11 @@ import android.os.Bundle
 import android.view.*
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.room.Room
 import com.example.abodemart.R
+import com.example.abodemart.ui.activities.SearchActivity
 import com.example.abodemart.ui.activities.StoreActivity
 import com.example.abodemart.ui.adapters.MyListAdapter
-import com.example.abodemart.database.CartDatabase
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class HomeFragment : Fragment() {
 
@@ -27,42 +26,30 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(R.layout.fragment_home, container, false)
+    }
 
-        root.findViewById<CardView>(R.id.cv_costco).setOnClickListener {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view.findViewById<CardView>(R.id.cv_costco).setOnClickListener {
             val intent = Intent(this@HomeFragment.context, StoreActivity::class.java)
             intent.putExtra("Costco", true)
             startActivity(intent)
         }
-        root.findViewById<CardView>(R.id.cv_whole_foods).setOnClickListener {
+        view.findViewById<CardView>(R.id.cv_whole_foods).setOnClickListener {
             val intent = Intent(this@HomeFragment.context, StoreActivity::class.java)
             intent.putExtra("Whole Foods", true)
             startActivity(intent)
         }
-        root.findViewById<CardView>(R.id.cv_nib).setOnClickListener {
+        view.findViewById<CardView>(R.id.cv_nib).setOnClickListener {
             val intent = Intent(this@HomeFragment.context, StoreActivity::class.java)
             intent.putExtra("New India Bazar", true)
             startActivity(intent)
         }
-        return root
+        view.findViewById<FloatingActionButton>(R.id.fab_search).setOnClickListener {
+            val intent = Intent(this@HomeFragment.context, SearchActivity::class.java)
+            startActivity(intent)
+        }
     }
 
-//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-//        inflater.inflate(R.menu.home_cart, menu)
-//        super.onCreateOptionsMenu(menu, inflater)
-//    }
-//
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        val id = item.itemId
-//        when (id) {
-//            // when settings in clicked on dashboard fragment
-//            R.id.action_cart -> {
-//                val dialog = CartActivity()
-//                val fragmentManager = (activity as FragmentActivity).supportFragmentManager
-//                (activity as HomeActivity).dialog.show(fragmentManager, "cartDialog")
-//                return true
-//            }
-//        }
-//        return super.onOptionsItemSelected(item)
-//    }
 }

@@ -14,10 +14,10 @@ import com.example.abodemart.database.ProductDatabase
 import com.example.abodemart.models.ProductData
 import com.example.abodemart.utils.MSPButtonBold
 
-class HandleProductActivity : AppCompatActivity(), View.OnClickListener {
+class ManageProductActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_handle_product)
+        setContentView(R.layout.activity_manage_product)
         setupActionBar()
 
         @Suppress("DEPRECATION")
@@ -32,19 +32,19 @@ class HandleProductActivity : AppCompatActivity(), View.OnClickListener {
 
 
         // Click event assigned to Add Product
-        findViewById<MSPButtonBold>(R.id.btn_add_product).setOnClickListener(this@HandleProductActivity)
+        findViewById<MSPButtonBold>(R.id.btn_add_product).setOnClickListener(this@ManageProductActivity)
 
         // Click event assigned to Update Product
-        findViewById<MSPButtonBold>(R.id.btn_update_product).setOnClickListener(this@HandleProductActivity)
+        findViewById<MSPButtonBold>(R.id.btn_update_product).setOnClickListener(this@ManageProductActivity)
 
         // Click event assigned to Delete Product
-        findViewById<MSPButtonBold>(R.id.btn_delete_product).setOnClickListener(this@HandleProductActivity)
+        findViewById<MSPButtonBold>(R.id.btn_delete_product).setOnClickListener(this@ManageProductActivity)
 
         // Click event assigned to Delete all Products
-        findViewById<MSPButtonBold>(R.id.btn_delete_all_products).setOnClickListener(this@HandleProductActivity)
+        findViewById<MSPButtonBold>(R.id.btn_delete_all_products).setOnClickListener(this@ManageProductActivity)
 
         // Click event assigned to Delete all Products
-        findViewById<MSPButtonBold>(R.id.btn_view_all_products).setOnClickListener(this@HandleProductActivity)
+        findViewById<MSPButtonBold>(R.id.btn_view_all_products).setOnClickListener(this@ManageProductActivity)
 
     }
 

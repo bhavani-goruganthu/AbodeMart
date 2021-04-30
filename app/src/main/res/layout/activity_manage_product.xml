@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activities.HandleProductActivity">
+    tools:context=".ui.activities.ManageProductActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_handle_product_activity"
@@ -20,10 +20,12 @@
             android:id="@+id/tv_title_add_product"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingStart="@dimen/toolbar_title_paddingStart"
+            android:paddingEnd="0dp"
             android:gravity="center"
-            android:text="Handle Product"
+            android:text="MANAGE PRODUCTS"
             android:textColor="@color/white"
-            android:textSize="25sp"
+            android:textSize="@dimen/toolbar_title_text_size"
             android:textStyle="bold" />
 
     </androidx.appcompat.widget.Toolbar>

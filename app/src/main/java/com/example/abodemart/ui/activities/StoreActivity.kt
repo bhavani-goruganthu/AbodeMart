@@ -1,9 +1,7 @@
 package com.example.abodemart.ui.activities
 
-import android.content.Context
 import android.os.Build
 import android.os.Bundle
-import android.util.AttributeSet
 import android.view.*
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
