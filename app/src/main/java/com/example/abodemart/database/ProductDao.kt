@@ -14,6 +14,12 @@ interface ProductDao {
     @Query("SELECT * FROM ProductData WHERE store=:storeName")
     fun getStoreProducts(storeName: String?) : List<ProductData>
 
+    @Query("SELECT * FROM ProductData WHERE title LIKE :searchTerm")
+    fun getSearchProducts(searchTerm: String?) : List<ProductData>
+
+    @Query("SELECT * FROM ProductData WHERE title LIKE :searchTerm AND store=:storeName")
+    fun getStoreSearchProducts(searchTerm: String?, storeName: String?) : List<ProductData>
+
     @Insert
     fun insertProduct(product: ProductData)
 

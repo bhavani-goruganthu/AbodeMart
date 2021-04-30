@@ -86,5 +86,6 @@
 
     <string name="Item_Count"><b>1</b></string>
     <string name="btn_clear_cart"><b>Clear All</b></string>
+    <string name="title_search">Search</string>
 
 </resources>

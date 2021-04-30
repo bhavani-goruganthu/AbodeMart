@@ -24,7 +24,8 @@ class ProductsAdapter(
     private val context: Context,
     private var productDatabase: ProductDatabase,
     private var cartDatabase: CartDatabase,
-    private var storeName: String
+    private var searchTerm: String,
+    private var storeName: String,
 ) :
     RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
 
@@ -36,13 +37,14 @@ class ProductsAdapter(
 
     override fun getItemCount(): Int {
         // get all products
-        val allStoreProducts = productDatabase.productDao().getStoreProducts(storeName)
+//        val allStoreProducts = productDatabase.productDao().getStoreProducts(storeName)
+        val allStoreProducts = productDatabase.productDao().getStoreSearchProducts(searchTerm, storeName)
         return allStoreProducts.size
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         // get all products
-        val allStoreProducts = productDatabase.productDao().getStoreProducts(storeName)
+        val allStoreProducts = productDatabase.productDao().getStoreSearchProducts(searchTerm, storeName)
         val newProductsList = allStoreProducts[position]
 
         viewHolder.cardProductTitle.text = newProductsList.title

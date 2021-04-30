@@ -1,19 +1,25 @@
 package com.example.abodemart.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.CheckedTextView
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.room.Room
 import com.example.abodemart.R
+import com.example.abodemart.database.CartDatabase
+import com.example.abodemart.utils.MSPButtonBold
 
 class CheckoutActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checkout)
-
+        setupActionBar()
         val ctViewCOD = findViewById<CheckedTextView>(R.id.ctv_COD)
         val ctViewRent = findViewById<CheckedTextView>(R.id.ctv_add_to_rent)
+        val btnPlaceOrder = findViewById<MSPButtonBold>(R.id.btn_place_order)
+
         if (ctViewCOD != null) {
             ctViewCOD.isChecked = true
             ctViewCOD.setCheckMarkDrawable(
@@ -28,6 +34,7 @@ class CheckoutActivity : AppCompatActivity(), View.OnClickListener {
             )
             ctViewRent.setOnClickListener(this)
         }
+        btnPlaceOrder.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -67,7 +74,45 @@ class CheckoutActivity : AppCompatActivity(), View.OnClickListener {
                             android.R.drawable.checkbox_off_background
                     )
                 }
+                R.id.btn_place_order -> {
+                    // room db
+                    val cartDatabase = Room.databaseBuilder(
+                        this, CartDatabase::class.java, "cart_database"
+                    ).allowMainThreadQueries().build()
+                    cartDatabase.cartDao().deleteAllItems()
+
+                    val builder = AlertDialog.Builder(this)
+                    builder.setTitle("")
+                    builder.setMessage("Order Successful!!")
+                    builder.setIcon(android.R.drawable.ic_dialog_info)
+                    builder.setPositiveButton("Ok") { dialogInterface , which ->
+                        dialogInterface.dismiss()
+                        val intent = Intent(this@CheckoutActivity, HomeActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                    val alertDialog: AlertDialog = builder.create()
+                    alertDialog.setCanceledOnTouchOutside(false)
+                    alertDialog.setCancelable(false)
+                    alertDialog.show()
+                }
             }
+        }
+    }
+
+    // for the action bar (left arrow like back button)
+    private fun setupActionBar() {
+        setSupportActionBar(findViewById(R.id.toolbar_checkout))
+        val actionBar = supportActionBar
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true)
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_home_white_24dp)
+            actionBar.title = ""
+        }
+        findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar_checkout).setNavigationOnClickListener {
+            val intent = Intent(this@CheckoutActivity, HomeActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }
