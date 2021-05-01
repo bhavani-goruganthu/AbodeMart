@@ -10,5 +10,9 @@ data class CartData(
     val storeName: String,
     val itemCost: String,
     val itemCount: String,
-    val itemPerCost: String
+    val itemPerCost: String,
+//    val orderShippingCost: String,
+//    val orderTaxCost: String,
+//    val orderTotalCost: String,
+//    val orderItemsCount: String,
 )

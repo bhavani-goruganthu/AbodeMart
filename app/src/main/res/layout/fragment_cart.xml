@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:weightSum="10">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_user_profile_activity"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_weight="1"
+        android:background="@drawable/bg_app_gradient_color">
+
+        <com.example.abodemart.utils.MSPTextViewBold
+            android:id="@+id/tv_Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="@string/cart_title"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <com.example.abodemart.utils.MSPTextViewBold
+        android:id="@+id/tv_info"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/empty_cart"
+        android:textAlignment="center"
+        android:textColor="@color/colorThemeBlue"
+        android:textSize="14sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <com.example.abodemart.utils.MSPTextViewBold
+            android:id="@+id/tv_cart_items_count"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:text="Count: 0"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <com.example.abodemart.utils.MSPButtonBold
+            android:id="@+id/btn_clear_cart"
+            android:layout_width="80dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/bg_item_grey_border"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:text="@string/btn_clear_cart"
+            android:textColor="@color/colorSnackBarError"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_cart_items"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_weight="6" />
+
+    <com.example.abodemart.utils.MSPTextViewBold
+        android:id="@+id/tv_cart_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginHorizontal="13dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Cart Total: : $0.00"
+        android:textAlignment="center"
+        android:textColor="@color/colorThemeBlue"
+        android:textSize="14sp" />
+
+    <com.example.abodemart.utils.MSPTextViewBold
+        android:id="@+id/tv_order_Tax_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginHorizontal="13dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Tax : $0.00"
+        android:textAlignment="center"
+        android:textColor="@color/colorThemeBlue"
+        android:textSize="14sp" />
+
+    <com.example.abodemart.utils.MSPTextViewBold
+        android:id="@+id/tv_order_shipping_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginHorizontal="13dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Shipping Fee : $10.00"
+        android:textAlignment="center"
+        android:textColor="@color/colorThemeBlue"
+        android:textSize="14sp" />
+
+    <com.example.abodemart.utils.MSPTextViewBold
+        android:id="@+id/tv_order_Total_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginHorizontal="13dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Total Cost : $10.00"
+        android:textAlignment="center"
+        android:textColor="@color/colorThemeBlue"
+        android:textSize="14sp" />
+
+    <com.example.abodemart.utils.MSPButtonBold
+        android:id="@+id/btn_checkout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="2"
+        android:background="@drawable/bg_button"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:paddingVertical="9dp"
+        android:text="Checkout"
+        android:textColor="@color/white"
+        android:textSize="@dimen/btn_textSize" />
+
+
+
+</LinearLayout>

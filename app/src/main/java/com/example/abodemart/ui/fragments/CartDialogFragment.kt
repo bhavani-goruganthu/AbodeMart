@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentActivity
@@ -15,7 +16,6 @@ import androidx.room.Room
 import com.example.abodemart.R
 import com.example.abodemart.database.CartDatabase
 import com.example.abodemart.ui.activities.CheckoutActivity
-import com.example.abodemart.ui.activities.StoreActivity
 import com.example.abodemart.ui.adapters.MyListAdapter
 import com.example.abodemart.utils.MSPButtonBold
 import com.example.abodemart.utils.MSPTextViewBold
@@ -29,7 +29,7 @@ class CartDialogFragment() : DialogFragment(), View.OnClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val rootView: View = inflater.inflate(R.layout.activity_cart, container, false)
+        val rootView: View = inflater.inflate(R.layout.fragment_cart, container, false)
         val recyclerView = rootView.findViewById<RecyclerView>(R.id.rv_cart_items)
         val clearCartButton = rootView.findViewById<MSPButtonBold>(R.id.btn_clear_cart)
         val checkoutButton = rootView.findViewById<MSPButtonBold>(R.id.btn_checkout)
@@ -72,6 +72,39 @@ class CartDialogFragment() : DialogFragment(), View.OnClickListener {
                 if (allItems.isEmpty()) {
                     rootView.findViewById<MSPTextViewBold>(R.id.tv_info).text = getString(R.string.empty_cart)
                     clearCartButton.visibility = View.GONE
+                    val tvCartItemsCount = rootView.findViewById<TextView>(R.id.tv_cart_items_count)
+                    val tvCartTotal = rootView.findViewById<TextView>(R.id.tv_cart_total)
+                    val tvOrderTaxCost = rootView.findViewById<TextView>(R.id.tv_order_Tax_cost)
+                    val tvOrderTotalCost = rootView.findViewById<TextView>(R.id.tv_order_Total_cost)
+                    // cart count
+                    var cartItemsCount = 0
+                    for(i in 0 until (allItems.size)){
+                        cartItemsCount += allItems[i].itemCount.toInt()
+                    }
+                    if (tvCartItemsCount != null) {
+                        tvCartItemsCount.text = "Count: ${cartItemsCount.toString()}"
+                    }
+                    // cart total
+                    var cartTotal = 0.0
+                    for(i in 0 until (allItems.size)){
+                        cartTotal += allItems[i].itemCost.removeSurrounding("$", "").toFloat()
+                    }
+                    val updatedCartTotal = String.format("%.2f", cartTotal).toFloat()
+                    if (tvCartTotal != null) {
+                        tvCartTotal.text = "Cart Total : $${updatedCartTotal.toString()}"
+                    }
+                    // tax cost
+                    val orderTaxCost = cartTotal * 0.1
+                    val updatedOrderTaxCost = String.format("%.2f", orderTaxCost).toFloat()
+                    if (tvOrderTaxCost != null) {
+                        tvOrderTaxCost.text = "Tax : $${updatedOrderTaxCost.toString()}"
+                    }
+                    // update total and add tax
+                    val orderTotalCost =  cartTotal + orderTaxCost + 10.0
+                    val updatedOrderTotalCost = String.format("%.2f", orderTotalCost).toFloat()
+                    if (tvOrderTotalCost != null) {
+                        tvOrderTotalCost.text = "Total Cost : $${updatedOrderTotalCost.toString()}"
+                    }
                 }
             }
         }
@@ -84,11 +117,52 @@ class CartDialogFragment() : DialogFragment(), View.OnClickListener {
             (recyclerView.adapter)!!.notifyItemRangeRemoved(0, allItemsSize)
             (recyclerView.adapter)!!.notifyDataSetChanged()
             clearCartButton.visibility = View.GONE
-            rootView.findViewById<MSPTextViewBold>(R.id.tv_info).text = getString(R.string.empty_cart)
+
+            val cartDatabase = Room.databaseBuilder(
+                activity as FragmentActivity, CartDatabase::class.java, "cart_database"
+            ).allowMainThreadQueries().build()
+            // get all items
+            val allItems = cartDatabase.cartDao().getAllItems()
+
+            if (allItems.isEmpty()) {
+                rootView.findViewById<MSPTextViewBold>(R.id.tv_info).text = getString(R.string.empty_cart)
+                val tvCartItemsCount = rootView.findViewById<TextView>(R.id.tv_cart_items_count)
+                val tvCartTotal = rootView.findViewById<TextView>(R.id.tv_cart_total)
+                val tvOrderTaxCost = rootView.findViewById<TextView>(R.id.tv_order_Tax_cost)
+                val tvOrderTotalCost = rootView.findViewById<TextView>(R.id.tv_order_Total_cost)
+
+                // cart count
+                var cartItemsCount = 0
+                for(i in 0 until (allItems.size)){
+                    cartItemsCount += allItems[i].itemCount.toInt()
+                }
+                if (tvCartItemsCount != null) {
+                    tvCartItemsCount.text = "Count: ${cartItemsCount.toString()}"
+                }
+                // cart total
+                var cartTotal = 0.0
+                for(i in 0 until (allItems.size)){
+                    cartTotal += allItems[i].itemCost.removeSurrounding("$", "").toFloat()
+                }
+                val updatedCartTotal = String.format("%.2f", cartTotal).toFloat()
+                if (tvCartTotal != null) {
+                    tvCartTotal.text = "Cart Total : $${updatedCartTotal.toString()}"
+                }
+                // tax cost
+                val orderTaxCost = cartTotal * 0.1
+                val updatedOrderTaxCost = String.format("%.2f", orderTaxCost).toFloat()
+                if (tvOrderTaxCost != null) {
+                    tvOrderTaxCost.text = "Tax : $${updatedOrderTaxCost.toString()}"
+                }
+                // update total and add tax
+                val orderTotalCost =  cartTotal + orderTaxCost + 10.0
+                val updatedOrderTotalCost = String.format("%.2f", orderTotalCost).toFloat()
+                if (tvOrderTotalCost != null) {
+                    tvOrderTotalCost.text = "Total Cost : $${updatedOrderTotalCost.toString()}"
+                }
+            }
         }
-
         checkoutButton.setOnClickListener(this)
-
         return rootView
     }
 
@@ -100,7 +174,7 @@ class CartDialogFragment() : DialogFragment(), View.OnClickListener {
         ).allowMainThreadQueries().build()
 
         // get all items
-        var allItems = cartDatabase.cartDao().getAllItems()
+        val allItems = cartDatabase.cartDao().getAllItems()
 
         if (v != null) {
             when (v.id) {

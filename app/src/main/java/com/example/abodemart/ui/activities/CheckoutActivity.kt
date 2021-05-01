@@ -1,15 +1,23 @@
 package com.example.abodemart.ui.activities
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.CheckedTextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.example.abodemart.R
 import com.example.abodemart.database.CartDatabase
+import com.example.abodemart.database.OrderDatabase
+import com.example.abodemart.models.OrderData
 import com.example.abodemart.utils.MSPButtonBold
+import java.text.SimpleDateFormat
+import java.time.*
+import java.time.temporal.TemporalAdjusters
+import java.util.*
 
 class CheckoutActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,9 +45,22 @@ class CheckoutActivity : AppCompatActivity(), View.OnClickListener {
         btnPlaceOrder.setOnClickListener(this)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onClick(v: View?) {
         val ctViewCOD = findViewById<CheckedTextView>(R.id.ctv_COD)
         val ctViewRent = findViewById<CheckedTextView>(R.id.ctv_add_to_rent)
+        // room db
+        val cartDatabase = Room.databaseBuilder(
+            this, CartDatabase::class.java, "cart_database"
+        ).allowMainThreadQueries().build()
+        // get all items
+        val allItems = cartDatabase.cartDao().getAllItems()
+
+        // order db
+        val orderDatabase = Room.databaseBuilder(
+            this, OrderDatabase::class.java, "order_database"
+        ).allowMainThreadQueries().build()
+
         if (v != null) {
             when (v.id) {
                 R.id.ctv_COD -> {
@@ -75,10 +96,30 @@ class CheckoutActivity : AppCompatActivity(), View.OnClickListener {
                     )
                 }
                 R.id.btn_place_order -> {
-                    // room db
-                    val cartDatabase = Room.databaseBuilder(
-                        this, CartDatabase::class.java, "cart_database"
-                    ).allowMainThreadQueries().build()
+
+                    val simpleDateFormat = SimpleDateFormat.getDateTimeInstance()
+                    val currentDateAndTime: String = simpleDateFormat.format(Date())
+
+                    // can be changed based on preferred delivery day
+                    val nextWedDate = LocalDate.now().with(TemporalAdjusters.nextOrSame(DayOfWeek.WEDNESDAY))
+
+
+                    orderDatabase.orderDao().insertOrder(
+                        OrderData(
+                            orderStatus = "Processing",
+                            orderOrderedDate = currentDateAndTime,
+                            orderDeliveredDate = nextWedDate.toString(),
+                            orderItemsCount = allItems.size.toString(),
+                            orderItemsCost = "",
+                            orderShippingCost = "",
+                            orderTaxCost = "",
+                            orderTotalCost = "",
+                            orderedItems = allItems.toString()
+                        )
+                    )
+
+
+
                     cartDatabase.cartDao().deleteAllItems()
 
                     val builder = AlertDialog.Builder(this)
