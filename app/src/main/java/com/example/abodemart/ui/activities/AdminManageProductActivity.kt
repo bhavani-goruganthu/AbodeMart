@@ -1,5 +1,6 @@
 package com.example.abodemart.ui.activities
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log.d
@@ -13,6 +14,7 @@ import com.example.abodemart.R
 import com.example.abodemart.database.ProductDatabase
 import com.example.abodemart.models.ProductData
 import com.example.abodemart.utils.MSPButtonBold
+import com.google.firebase.auth.FirebaseAuth
 
 class AdminManageProductActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,10 +55,15 @@ class AdminManageProductActivity : AppCompatActivity(), View.OnClickListener {
         val actionBar = supportActionBar
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true)
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_white_color_back_24dp)
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_logout_24)
             actionBar.title = ""
         }
-        findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar_handle_product_activity).setNavigationOnClickListener { onBackPressed() }
+        findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar_handle_product_activity).setNavigationOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            val intent = Intent(this@AdminManageProductActivity, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
     }
 
     override fun onClick(v: View?) {
