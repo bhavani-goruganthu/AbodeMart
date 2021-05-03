@@ -37,6 +37,22 @@
         <item>Friday</item>
     </string-array>
 
+    //Register Snack bar
+    <string name="err_msg_enter_first_name">Please enter First Name</string>
+    <string name="err_msg_enter_last_name">Please enter Last Name</string>
+    <string name="err_msg_enter_email">Please enter Email</string>
+    <string name="err_msg_enter_contact_no">Please enter Contact Number</string>
+    <string name="err_msg_enter_building_no">Please enter Building Number</string>
+    <string name="err_msg_enter_apartment_no">Please enter Apartment Number</string>
+    <string name="err_msg_enter_preferred_weekday">Please select Preferred Weekday</string>
+    <string name="err_msg_enter_password">Please enter Password</string>
+    <string name="err_msg_enter_confirm_password">Please enter confirm Password</string>
+    <string name="err_msg_password_and_confirm_password_mismatch">Password and Confirm Password do not match</string>
+    <string name="err_msg_agree_terms_and_conditions">Please agree to the terms and conditions</string>
+    <string name="register_successful">Thank you for Registering..!!</string>
+
+
+    <string name="please_click_back_again_to_exit">Please click back again to exit</string>
 
     // Forgot Password
     <string name="title_forgot_password">FORGOT PASSWORD?</string>
@@ -92,5 +108,6 @@
     <string name="new_india_bazar_title">New India Bazar</string>
     <string name="order_status"><b><i>In Progress</i></b></string>
     <string name="order_details"><u>Details</u></string>
+    <string name="please_wait">Please Wait ...</string>
 
 </resources>

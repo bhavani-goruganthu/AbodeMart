@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AbodeMart">
-
+        <activity android:name=".ui.activities.AdminActivity"></activity>
         <activity android:name=".ui.activities.BaseCartMenuActivity" />
         <activity android:name=".ui.activities.BaseActivity" />
         <activity
@@ -47,7 +47,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AbodeMart.NoActionBar" />
         <activity
-            android:name=".ui.activities.ManageProductActivity"
+            android:name=".ui.activities.AdminManageProductActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AbodeMart.NoActionBar" />
         <activity

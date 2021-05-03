@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.abodemart.R
 import com.example.abodemart.ui.fragments.CartDialogFragment
 
-open class BaseCartMenuActivity : AppCompatActivity() {
+open class BaseCartMenuActivity : BaseActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.home_cart, menu)

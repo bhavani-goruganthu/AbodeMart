@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "599328075162",
+    "project_id": "abodemart-95db2",
+    "storage_bucket": "abodemart-95db2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:599328075162:android:6003a8073a98ad9aa11e23",
+        "android_client_info": {
+          "package_name": "com.example.abodemart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "599328075162-04msl39kd9c3rh61hbuc3th99s40ga5l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.abodemart",
+            "certificate_hash": "069506d3b9c9c0c9097a84404750b6f5bafa792c"
+          }
+        },
+        {
+          "client_id": "599328075162-cpofe4tlllfq1fh19g3olfabtnm1ofcb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjwmwS7wca7w9MMYqrUjH7-ndH7fk0pkU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "599328075162-cpofe4tlllfq1fh19g3olfabtnm1ofcb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

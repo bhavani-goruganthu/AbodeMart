@@ -6,21 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.MyOrdersFragment">
 
-    <com.example.abodemart.utils.MSPButtonBold
-        android:id="@+id/btn_add_product"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/et_padding"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/rv_order_list"
-        android:foreground="?attr/selectableItemBackground"
-        android:background="@drawable/bg_button"
-        android:textColor="@color/white"
-        android:text="ADD"
-        />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_order_list"
         android:layout_margin="13dp"

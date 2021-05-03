@@ -12,7 +12,7 @@ import androidx.room.Room
 import com.example.abodemart.R
 import com.example.abodemart.database.OrderDatabase
 import com.example.abodemart.ui.activities.HomeActivity
-import com.example.abodemart.ui.activities.ManageProductActivity
+import com.example.abodemart.ui.activities.AdminManageProductActivity
 import com.example.abodemart.ui.adapters.OrdersAdapter
 import com.example.abodemart.utils.MSPButtonBold
 
@@ -26,7 +26,7 @@ class MyOrdersFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_myorders, container, false)
 
         root.findViewById<MSPButtonBold>(R.id.btn_add_product).setOnClickListener{
-            val intent = Intent(this@MyOrdersFragment.context, ManageProductActivity::class.java)
+            val intent = Intent(this@MyOrdersFragment.context, AdminManageProductActivity::class.java)
             startActivity(intent)
         }
         return root

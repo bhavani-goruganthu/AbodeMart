@@ -12,6 +12,7 @@ import com.example.abodemart.R
 import com.example.abodemart.ui.activities.LoginActivity
 import com.example.abodemart.ui.activities.UserProfileActivity
 import com.example.abodemart.utils.MSPButtonBold
+import com.google.firebase.auth.FirebaseAuth
 
 class SettingsFragment : Fragment(){
 
@@ -34,6 +35,7 @@ class SettingsFragment : Fragment(){
 
             builder.setPositiveButton("Yes") { dialogInterface, which ->
                 dialogInterface.dismiss()
+                FirebaseAuth.getInstance().signOut()
                 val intent = Intent(this@SettingsFragment.context, LoginActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
