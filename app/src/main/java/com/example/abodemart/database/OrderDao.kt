@@ -18,6 +18,6 @@ interface OrderDao {
 //    @Query("DELETE FROM OrderData WHERE order_uid = :id")
 //    fun deleteOrder(id: Int?)
 //
-//    @Query("DELETE FROM OrderData")
-//    fun deleteAllOrders()
+    @Query("DELETE FROM OrderData")
+    fun deleteAllOrders()
 }

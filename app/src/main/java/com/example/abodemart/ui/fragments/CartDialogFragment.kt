@@ -181,6 +181,20 @@ class CartDialogFragment() : DialogFragment(), View.OnClickListener {
                 R.id.btn_checkout -> {
                     if(allItems.isNotEmpty()) {
                         val intent = Intent(this.context, CheckoutActivity::class.java)
+                        val cartItemsCount = view?.findViewById<TextView>(R.id.tv_cart_items_count)?.text.toString()
+                        val cartTotal = view?.findViewById<TextView>(R.id.tv_cart_total)?.text.toString()
+                        val orderTaxCost = view?.findViewById<TextView>(R.id.tv_order_Tax_cost)?.text.toString()
+                        val orderTotalCost = view?.findViewById<TextView>(R.id.tv_order_Total_cost)?.text.toString()
+                        val bundle = Bundle()
+                        bundle.putString("cartItemsCount", cartItemsCount)
+                        bundle.putString("cartTotal", cartTotal)
+                        bundle.putString("orderTaxCost", orderTaxCost)
+                        bundle.putString("orderTotalCost", orderTotalCost)
+//                        intent.putExtra("cartItemsCount", cartItemsCount)
+//                        intent.putExtra("cartTotal", cartTotal)
+//                        intent.putExtra("orderTaxCost", orderTaxCost)
+//                        intent.putExtra("orderTotalCost", orderTotalCost)
+                        intent.putExtras(bundle)
                         startActivity(intent)
                         this.dismiss()
                     } else {

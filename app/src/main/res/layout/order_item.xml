@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="8dp"
+    android:outlineAmbientShadowColor="@color/colorThemeGreen"
+    android:outlineSpotShadowColor="@color/colorThemeGreen"
+    app:cardBackgroundColor="#BFEDC1"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp"
+    app:cardMaxElevation="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <com.example.abodemart.utils.MSPTextViewBold
+                android:id="@+id/tv_order_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Order # : "
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <com.example.abodemart.utils.MSPTextViewBold
+                android:id="@+id/tv_order_total_cost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/et_padding"
+                android:layout_weight="2"
+                android:gravity="end"
+                android:text="$00.00"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_order_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <com.example.abodemart.utils.MSPTextViewBold
+                android:id="@+id/tv_order_status_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:text="Status  : "
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <com.example.abodemart.utils.MSPTextViewBold
+                android:id="@+id/tv_order_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/order_status"
+                android:layout_weight="1"
+                android:textColor="@color/colorThemeBlue"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <com.example.abodemart.utils.MSPTextViewBold
+            android:id="@+id/tv_order_details"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="end"
+            android:layout_marginHorizontal="10dp"
+            android:padding="4dp"
+            android:background="@drawable/bg_item_grey_border"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:text="@string/order_details"
+            android:textColor="@color/colorThemeBlue"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

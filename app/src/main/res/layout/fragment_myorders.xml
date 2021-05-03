@@ -7,22 +7,24 @@
     tools:context=".ui.fragments.MyOrdersFragment">
 
     <com.example.abodemart.utils.MSPButtonBold
-        android:id="@+id/btn_handle_product"
-        android:layout_width="200dp"
+        android:id="@+id/btn_add_product"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/bg_button"
-        android:foreground="?attr/selectableItemBackground"
-        android:gravity="center"
-        android:paddingTop="@dimen/btn_padding"
-        android:paddingBottom="@dimen/btn_padding"
-        android:text="Add"
-        android:textColor="@color/white"
-        android:textSize="@dimen/btn_textSize"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="@dimen/et_padding"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toTopOf="@id/rv_order_list"
+        android:foreground="?attr/selectableItemBackground"
+        android:background="@drawable/bg_button"
+        android:textColor="@color/white"
+        android:text="ADD"
+        />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_order_list"
+        android:layout_margin="13dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

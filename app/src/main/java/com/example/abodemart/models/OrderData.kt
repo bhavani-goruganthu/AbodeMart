@@ -5,12 +5,11 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class OrderData(
-    @PrimaryKey(autoGenerate = true) val order_uid: Int = 0,
+    @PrimaryKey(autoGenerate = false) val order_uid: String,
     val orderStatus: String,
     val orderOrderedDate: String,
     val orderDeliveredDate: String,
     val orderItemsCount: String,
-    val orderItemsCost: String,
     val orderShippingCost: String,
     val orderTaxCost: String,
     val orderTotalCost: String,

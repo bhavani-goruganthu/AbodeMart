@@ -90,5 +90,7 @@
     <string name="costco_title">Costco Wholesale</string>
     <string name="whole_foods_title">Whole Foods Market</string>
     <string name="new_india_bazar_title">New India Bazar</string>
+    <string name="order_status"><b><i>In Progress</i></b></string>
+    <string name="order_details"><u>Details</u></string>
 
 </resources>
