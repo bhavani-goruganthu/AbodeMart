@@ -46,8 +46,6 @@ class OrdersAdapter(private val context: Context, private var orderDatabase: Ord
             val tvOrderItemsCount = customDialog.findViewById<MSPTextView>(R.id.tv_order_items_count)
             val tvOrderItemsOrdered = customDialog.findViewById<MSPTextView>(R.id.tv_order_items_ordered)
 
-
-
             tvOrderNumber.text = newOrdersList.order_uid
             tvOrderStatus.text = newOrdersList.orderStatus
             tvOrderTotalCost.text = newOrdersList.orderTotalCost.removePrefix("Total Cost : ")
