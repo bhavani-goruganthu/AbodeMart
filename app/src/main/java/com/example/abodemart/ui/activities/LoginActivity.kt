@@ -47,7 +47,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
             }
             else -> {
                 // not needed for now.. if successful , the message to be displayed is in loginRegisteredUser()
-                showErrorSnackBar("Details are Valid", false)
+//                showErrorSnackBar("Details are Valid", false)
                 true
             }
         }

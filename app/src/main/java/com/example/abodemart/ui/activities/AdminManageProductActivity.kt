@@ -32,6 +32,11 @@ class AdminManageProductActivity : AppCompatActivity(), View.OnClickListener {
             )
         }
 
+        val productDatabase = Room.databaseBuilder(
+            applicationContext, ProductDatabase::class.java, "product_database"
+        ).allowMainThreadQueries().build()
+        val allProducts = productDatabase.productDao().getAllProducts()
+                    d("bhavani", "allProducts size? \n $allProducts")
 
         // Click event assigned to Add Product
         findViewById<MSPButtonBold>(R.id.btn_add_product).setOnClickListener(this@AdminManageProductActivity)
@@ -90,7 +95,7 @@ class AdminManageProductActivity : AppCompatActivity(), View.OnClickListener {
                         )
                     )
                     val allProducts = productDatabase.productDao().getAllProducts()
-//                    d("bhavani", "allProducts size? \n $allProducts")
+                    d("bhavani", "allProducts size? \n $allProducts")
                     productIDUpdate.setText("")
                     productTitle.setText("")
                     productImageUrl.setText("")
@@ -109,7 +114,7 @@ class AdminManageProductActivity : AppCompatActivity(), View.OnClickListener {
                         )
                     )
                     val allProducts = productDatabase.productDao().getAllProducts()
-//                    d("bhavani", "allProducts size? \n $allProducts")
+                    d("bhavani", "allProducts size? \n $allProducts")
                     productIDUpdate.setText("")
                     productTitle.setText("")
                     productImageUrl.setText("")

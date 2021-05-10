@@ -165,7 +165,12 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
                             val firebaseUser: FirebaseUser = task.result!!.user!!
 
                             hideProgressDialog()
-                            showErrorSnackBar(resources.getString(R.string.register_successful), false)
+//                            showErrorSnackBar(resources.getString(R.string.register_successful), false)
+                            Toast.makeText(
+                                this@RegisterActivity,
+                                "Thank you for Registering!! ",
+                                Toast.LENGTH_LONG
+                            ).show()
                              // signOut from register page and show login page to sign in again
                             FirebaseAuth.getInstance().signOut()
                              // this closes register screen and as login is the previous screen,

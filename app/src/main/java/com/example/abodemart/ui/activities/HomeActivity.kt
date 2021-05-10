@@ -10,7 +10,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.room.Room
 import com.example.abodemart.R
+import com.example.abodemart.database.OrderDatabase
+import com.example.abodemart.database.ProductDatabase
 
 class HomeActivity : BaseCartMenuActivity() {
 
@@ -33,6 +36,13 @@ class HomeActivity : BaseCartMenuActivity() {
                     R.drawable.bg_app_gradient_color
                 )
         )
+
+        // room db for orders
+        val orderDatabase = Room.databaseBuilder(
+            applicationContext, OrderDatabase::class.java, "order_database"
+        ).allowMainThreadQueries().build()
+        // for deleting all orders
+//        orderDatabase.orderDao().deleteAllOrders()
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
